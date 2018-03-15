@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  box-shadow: 0 0 3px 3px rgba(65, 180, 250, 0.8);
+  outline: none !important;
+}
+
+a,
+a:visited,
+a:active,
+a:focus {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+html {
+  font-size: 10px;
+  height: 100%;
+}
+
+body {
+  background-color: #333;
+  color: #fff;
+  font: 14px Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+  min-height: 100%;
+  padding: 1% 20px 70px;
+  position: relative;
+  text-align: center;
+}
