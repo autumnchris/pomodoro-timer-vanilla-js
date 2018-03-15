@@ -34,6 +34,15 @@ body {
   text-align: center;
 }
 
+h1 {
+  display: inline-block;
+  float: left;
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
 footer {
   background-color: #404040;
   bottom: 0;
@@ -53,4 +62,11 @@ footer a:hover,
 footer a:active,
 footer a:focus {
   color: #1ad1ff;
+}
+
+@media only screen and (min-width: 330px) {
+
+  h1 {
+    font-size: 1.5rem;
+  }
 }
