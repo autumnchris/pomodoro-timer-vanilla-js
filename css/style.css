@@ -76,6 +76,21 @@ h1 {
   font-size: 3em;
 }
 
+.timer-button,
+.timer-button:active,
+.timer-button:focus {
+  background-color: #1ad1ff;
+  border: 2px solid #1ad1ff;
+  color: #333;
+  height: 60px;
+  margin: 8px;
+  width: 60px;
+}
+.timer-button:hover {
+  background-color: #333;
+  color: #1ad1ff;
+}
+
 footer {
   background-color: #404040;
   bottom: 0;
