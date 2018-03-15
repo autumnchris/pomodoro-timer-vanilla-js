@@ -18,6 +18,14 @@ a:hover {
   text-decoration: underline;
 }
 
+button,
+button:hover,
+button:active,
+button:focus {
+  border-radius: 3px;
+  cursor: pointer;
+}
+
 html {
   font-size: 10px;
   height: 100%;
