@@ -33,3 +33,24 @@ body {
   position: relative;
   text-align: center;
 }
+
+footer {
+  background-color: #404040;
+  bottom: 0;
+  font-size: 1.2rem;
+  left: 0;
+  letter-spacing: 2px;
+  margin: 0;
+  padding: 12px 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+
+footer a,
+footer a:visited,
+footer a:hover,
+footer a:active,
+footer a:focus {
+  color: #1ad1ff;
+}
