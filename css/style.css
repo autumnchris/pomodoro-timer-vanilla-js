@@ -51,6 +51,31 @@ h1 {
   text-transform: uppercase;
 }
 
+.timers {
+  margin: 12% auto 0;
+  max-width: 650px;
+}
+
+.timer-card {
+  background-color: #404040;
+  display: inline-block;
+  margin: 10px;
+  padding: 15px;
+  width: 300px;
+}
+
+.timer-card h2 {
+  font-size: 1.1em;
+  font-weight: 300;
+  margin-top: 0;
+  text-align: left;
+}
+
+.timer {
+  color: #1ad1ff;
+  font-size: 3em;
+}
+
 footer {
   background-color: #404040;
   bottom: 0;
