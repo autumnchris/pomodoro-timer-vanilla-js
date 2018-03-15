@@ -51,6 +51,21 @@ h1 {
   text-transform: uppercase;
 }
 
+#settings,
+#settings:active,
+#settings:focus {
+  background-color: #333;
+  border: none;
+  color: #1ad1ff;
+  float: right;
+  height: 40px;
+  width: 40px;
+}
+
+#settings:hover {
+  background-color: #404040;
+}
+
 .timers {
   margin: 12% auto 0;
   max-width: 650px;
