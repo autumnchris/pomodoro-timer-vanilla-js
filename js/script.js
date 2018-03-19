@@ -1,3 +1,11 @@
+var timer,
+workTimer,
+breakTimer,
+workMinutes,
+workSeconds,
+breakMinutes,
+breakSeconds;
+
 document.getElementById('settings').addEventListener('click', function() {
   document.getElementById('modal').setAttribute('style', 'display: block');
 });
