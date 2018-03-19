@@ -108,6 +108,10 @@ h1 {
   color: #1ad1ff;
 }
 
+#pause-timer {
+  display: none;
+}
+
 footer {
   background-color: #404040;
   bottom: 0;
