@@ -17,6 +17,34 @@
       <button type="button" id="settings">
         <span class="fa fa-cog fa-lg" title="settings"></span>
       </button>
+      <!-- SETTINGS MODAL -->
+      <div id="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Timer Settings</h2>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="work-timer-input">Set Work Time:</label>
+                <input type="text" value="25" id="work-timer-input">
+              </div>
+              <div class="form-group">
+                <label for="break-timer-input">Set Break Time:</label>
+                <input type="text" value="5" id="break-timer-input">
+              </div>
+            </form>
+            <!-- ERROR MESSAGE -->
+            <div id="error-message"><span class="fa fa-exclamation-triangle fa-lg fa-fw"></span> Please enter numbers between 1 and 60.</div>
+          </div>
+          <div class="modal-footer">
+            <div class="button-group">
+              <button type="button" id="save">Save</button>
+              <button type="button" id=cancel>Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
     <main>
       <!-- TIMERS -->
