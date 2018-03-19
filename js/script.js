@@ -79,6 +79,21 @@ document.getElementById('settings').addEventListener('click', function() {
   document.getElementById('modal').setAttribute('style', 'display: block');
 });
 
+document.getElementById('save').addEventListener('click', function() {
+  var workTimerInput = document.getElementById('work-timer-input').value;
+  var breakTimerInput = document.getElementById('break-timer-input').value;
+
+  if (workTimerInput.match(/^[0-9]+$/) && breakTimerInput.match(/^[0-9]+$/) && workTimerInput >= 1 && workTimerInput <= 60 && breakTimerInput >= 1 && breakTimerInput <= 60) {
+    document.getElementById('error-message').setAttribute('style', 'display: none');
+    clearInterval(timer);
+    setNewTimer();
+    document.getElementById('modal').setAttribute('style', 'display: none');
+  }
+  else {
+    document.getElementById('error-message').setAttribute('style', 'display: block');
+  }
+});
+
 document.getElementById('cancel').addEventListener('click', function() {
   document.getElementById('modal').setAttribute('style', 'display: none');
 });
