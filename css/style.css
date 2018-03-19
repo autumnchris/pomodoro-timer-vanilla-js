@@ -66,6 +66,87 @@ h1 {
   background-color: #404040;
 }
 
+#modal {
+  background-color: rgba(0,0,0,0.75);
+  display: none;
+  height: 100%;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 5px;
+  color: #333;
+  margin: 15% auto;
+  max-width: 400px;
+  width: 70%;
+}
+
+.modal-header {
+  border-bottom: 1px solid #e6e6e6;
+  padding: 10px;
+}
+
+.modal-header h2 {
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin: 0;
+  text-align: left;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-body .form-group {
+  margin: 10px;
+  text-align: left;
+}
+
+.modal-body input {
+  border: none;
+  border-bottom: 1px solid #333;
+  border-radius: 0;
+  max-width: 40px;
+}
+
+#error-message {
+  background-color: #fcf8e3;
+  border: 1px solid #faebcc;
+  border-radius: 3px;
+  color: #8a6d3b;
+  display: none;
+  line-height: 20px;
+  margin: 10px 0;
+  padding: 15px 10px;
+  width: 100%;
+}
+
+.modal-footer {
+  border-top: 1px solid #e6e6e6;
+  padding: 10px;
+  text-align: right;
+}
+
+.modal-footer button,
+.modal-footer button:active,
+.modal-footer button:focus {
+  background-color: #404040;
+  border: none;
+  color: #1ad1ff;
+  margin: 0 3px;
+  padding: 10px;
+}
+
+.modal-footer button:hover {
+  background-color: #333;
+}
+
 .timers {
   margin: 12% auto 0;
   max-width: 650px;
