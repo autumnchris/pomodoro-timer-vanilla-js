@@ -24,6 +24,12 @@ function setNewTimer() {
   document.getElementById('breakTimer').innerHTML = breakMinutes + ':' + breakSeconds;
 }
 
+function displayTimer() {
+  setNewTimer();
+}
+
+displayTimer();
+
 document.getElementById('settings').addEventListener('click', function() {
   document.getElementById('modal').setAttribute('style', 'display: block');
 });
