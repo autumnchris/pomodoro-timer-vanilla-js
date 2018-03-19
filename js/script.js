@@ -68,6 +68,13 @@ function displayTimer() {
 
 displayTimer();
 
+document.getElementById('reset-timer').addEventListener('click', function() {
+  clearInterval(timer);
+  setNewTimer();
+  document.getElementById('pause-timer').setAttribute('style', 'display: none');
+  document.getElementById('play-timer').setAttribute('style', 'display: inline-block');
+});
+
 document.getElementById('settings').addEventListener('click', function() {
   document.getElementById('modal').setAttribute('style', 'display: block');
 });
