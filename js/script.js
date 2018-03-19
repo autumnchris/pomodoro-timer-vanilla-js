@@ -27,6 +27,13 @@ function setNewTimer() {
 function displayTimer() {
   setNewTimer();
 
+  var audio = new Audio('audio/wink-sound-effect.mp3');
+  var audioHasPlayed = false;
+
+  function playAudio() {
+    audio.play();
+  }
+
   function countDown() {
     timer = setInterval(playTimer, 1000);
   }
@@ -41,12 +48,32 @@ function displayTimer() {
       workSeconds = workSeconds < 10 ? '0' + workSeconds : workSeconds;
     }
     else {
-      breakTimer--;
 
-      breakMinutes = parseInt(breakTimer / 60, 10);
-      breakSeconds = parseInt(breakTimer % 60, 10);
-      breakMinutes = breakMinutes < 10 ? '0' + breakMinutes : breakMinutes;
-      breakSeconds = breakSeconds < 10 ? '0' + breakSeconds : breakSeconds;
+      if (audioHasPlayed === false) {
+        playAudio();
+        audioHasPlayed = true;
+      }
+
+      if (breakTimer !== 0) {
+        breakTimer--;
+
+        breakMinutes = parseInt(breakTimer / 60, 10);
+        breakSeconds = parseInt(breakTimer % 60, 10);
+        breakMinutes = breakMinutes < 10 ? '0' + breakMinutes : breakMinutes;
+        breakSeconds = breakSeconds < 10 ? '0' + breakSeconds : breakSeconds;
+      }
+      else {
+        audioHasPlayed = false;
+
+        if (audioHasPlayed === false) {
+          playAudio();
+          audioHasPlayed = true;
+          clearInterval(timer);
+          setNewTimer();
+          document.getElementById('pause-timer').setAttribute('style', 'display: none');
+          document.getElementById('play-timer').setAttribute('style', 'display: inline-block');
+        }
+      }
     }
 
     document.getElementById('workTimer').innerHTML = workMinutes + ':' + workSeconds;
