@@ -58,6 +58,12 @@ function displayTimer() {
     document.getElementById('play-timer').setAttribute('style', 'display: none');
     document.getElementById('pause-timer').setAttribute('style', 'display: inline-block');
   });
+
+  document.getElementById('pause-timer').addEventListener('click', function() {
+    clearInterval(timer);
+    document.getElementById('pause-timer').setAttribute('style', 'display: none');
+    document.getElementById('play-timer').setAttribute('style', 'display: inline-block');
+  });
 }
 
 displayTimer();
