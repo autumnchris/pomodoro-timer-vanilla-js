@@ -39,6 +39,7 @@ function displayTimer() {
   }
 
   function playTimer() {
+
     if (workTimer !== 0) {
       workTimer--;
 
@@ -74,9 +75,7 @@ function displayTimer() {
           audioHasPlayed = true;
           clearInterval(timer);
           setNewTimer();
-          document.getElementById('pause-timer').setAttribute('style', 'display: none');
-          document.getElementById('play-timer').setAttribute('style', 'display: inline-block');
-          document.querySelector('title').innerHTML = 'Pomodoro Timer';
+          countDown();
         }
       }
     }
