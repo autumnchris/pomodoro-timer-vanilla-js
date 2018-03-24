@@ -46,6 +46,8 @@ function displayTimer() {
       workSeconds = parseInt(workTimer % 60, 10);
       workMinutes = workMinutes < 10 ? '0' + workMinutes : workMinutes;
       workSeconds = workSeconds < 10 ? '0' + workSeconds : workSeconds;
+
+      document.querySelector('title').innerHTML = 'Work – ' + workMinutes + ':' + workSeconds;
     }
     else {
 
@@ -61,6 +63,8 @@ function displayTimer() {
         breakSeconds = parseInt(breakTimer % 60, 10);
         breakMinutes = breakMinutes < 10 ? '0' + breakMinutes : breakMinutes;
         breakSeconds = breakSeconds < 10 ? '0' + breakSeconds : breakSeconds;
+
+        document.querySelector('title').innerHTML = 'Break – ' + breakMinutes + ':' + breakSeconds;
       }
       else {
         audioHasPlayed = false;
@@ -72,6 +76,7 @@ function displayTimer() {
           setNewTimer();
           document.getElementById('pause-timer').setAttribute('style', 'display: none');
           document.getElementById('play-timer').setAttribute('style', 'display: inline-block');
+          document.querySelector('title').innerHTML = 'Pomodoro Timer';
         }
       }
     }
@@ -100,6 +105,7 @@ document.getElementById('reset-timer').addEventListener('click', function() {
   setNewTimer();
   document.getElementById('pause-timer').setAttribute('style', 'display: none');
   document.getElementById('play-timer').setAttribute('style', 'display: inline-block');
+  document.querySelector('title').innerHTML = 'Pomodoro Timer';
 });
 
 document.getElementById('settings').addEventListener('click', function() {
@@ -115,6 +121,9 @@ document.getElementById('save').addEventListener('click', function() {
     clearInterval(timer);
     setNewTimer();
     document.getElementById('modal').setAttribute('style', 'display: none');
+    document.getElementById('pause-timer').setAttribute('style', 'display: none');
+    document.getElementById('play-timer').setAttribute('style', 'display: inline-block');
+    document.querySelector('title').innerHTML = 'Pomodoro Timer';
   }
   else {
     document.getElementById('error-message').setAttribute('style', 'display: block');
