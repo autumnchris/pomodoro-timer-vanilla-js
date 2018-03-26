@@ -20,8 +20,8 @@ function setNewTimer() {
   breakMinutes = breakMinutes < 10 ? '0' + breakMinutes : breakMinutes;
   breakSeconds = breakSeconds < 10 ? '0' + breakSeconds : breakSeconds;
 
-  document.getElementById('workTimer').innerHTML = workMinutes + ':' + workSeconds;
-  document.getElementById('breakTimer').innerHTML = breakMinutes + ':' + breakSeconds;
+  document.querySelector('.work-timer').innerHTML = workMinutes + ':' + workSeconds;
+  document.querySelector('.break-timer').innerHTML = breakMinutes + ':' + breakSeconds;
 }
 
 function displayTimer() {
@@ -80,56 +80,56 @@ function displayTimer() {
       }
     }
 
-    document.getElementById('workTimer').innerHTML = workMinutes + ':' + workSeconds;
-    document.getElementById('breakTimer').innerHTML = breakMinutes + ':' + breakSeconds;
+    document.querySelector('.work-timer').innerHTML = workMinutes + ':' + workSeconds;
+    document.querySelector('.break-timer').innerHTML = breakMinutes + ':' + breakSeconds;
   }
 
-  document.getElementById('play-timer').addEventListener('click', function() {
+  document.querySelector('.play-timer').addEventListener('click', function() {
     countDown();
-    document.getElementById('play-timer').setAttribute('style', 'display: none');
-    document.getElementById('pause-timer').setAttribute('style', 'display: inline-block');
+    document.querySelector('.play-timer').setAttribute('style', 'display: none');
+    document.querySelector('.pause-timer').setAttribute('style', 'display: inline-block');
   });
 
-  document.getElementById('pause-timer').addEventListener('click', function() {
+  document.querySelector('.pause-timer').addEventListener('click', function() {
     clearInterval(timer);
-    document.getElementById('pause-timer').setAttribute('style', 'display: none');
-    document.getElementById('play-timer').setAttribute('style', 'display: inline-block');
+    document.querySelector('.pause-timer').setAttribute('style', 'display: none');
+    document.querySelector('.play-timer').setAttribute('style', 'display: inline-block');
   });
 }
 
 displayTimer();
 
-document.getElementById('reset-timer').addEventListener('click', function() {
+document.querySelector('.reset-timer').addEventListener('click', function() {
   clearInterval(timer);
   setNewTimer();
-  document.getElementById('pause-timer').setAttribute('style', 'display: none');
-  document.getElementById('play-timer').setAttribute('style', 'display: inline-block');
+  document.querySelector('.pause-timer').setAttribute('style', 'display: none');
+  document.querySelector('.play-timer').setAttribute('style', 'display: inline-block');
   document.querySelector('title').innerHTML = 'Pomodoro Timer';
 });
 
-document.getElementById('settings').addEventListener('click', function() {
+document.querySelector('.settings').addEventListener('click', function() {
   document.getElementById('modal').setAttribute('style', 'display: block');
 });
 
-document.getElementById('save').addEventListener('click', function() {
+document.querySelector('.save').addEventListener('click', function() {
   var workTimerInput = document.getElementById('work-timer-input').value;
   var breakTimerInput = document.getElementById('break-timer-input').value;
 
   if (workTimerInput.match(/^[0-9]+$/) && breakTimerInput.match(/^[0-9]+$/) && workTimerInput >= 1 && workTimerInput <= 60 && breakTimerInput >= 1 && breakTimerInput <= 60) {
-    document.getElementById('error-message').setAttribute('style', 'display: none');
+    document.querySelector('.error-message').setAttribute('style', 'display: none');
     clearInterval(timer);
     setNewTimer();
     document.getElementById('modal').setAttribute('style', 'display: none');
-    document.getElementById('pause-timer').setAttribute('style', 'display: none');
-    document.getElementById('play-timer').setAttribute('style', 'display: inline-block');
+    document.querySelector('.pause-timer').setAttribute('style', 'display: none');
+    document.querySelector('.play-timer').setAttribute('style', 'display: inline-block');
     document.querySelector('title').innerHTML = 'Pomodoro Timer';
   }
   else {
-    document.getElementById('error-message').setAttribute('style', 'display: block');
+    document.querySelector('.error-message').setAttribute('style', 'display: block');
   }
 });
 
-document.getElementById('cancel').addEventListener('click', function() {
+document.querySelector('.cancel').addEventListener('click', function() {
   document.getElementById('modal').setAttribute('style', 'display: none');
 });
 

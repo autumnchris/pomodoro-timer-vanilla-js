@@ -14,7 +14,7 @@
     <header>
       <h1>Pomodoro Timer</h1>
       <!-- SETTINGS BUTTON -->
-      <button type="button" aria-label="settings" title="Settings" id="settings">
+      <button type="button" class="settings" aria-label="settings" title="Settings">
         <span class="fa fa-cog fa-lg"></span>
       </button>
       <!-- SETTINGS MODAL -->
@@ -35,12 +35,12 @@
               </div>
             </form>
             <!-- ERROR MESSAGE -->
-            <div id="error-message"><span class="fa fa-exclamation-triangle fa-lg fa-fw"></span> Please enter numbers between 1 and 60.</div>
+            <div class="error-message"><span class="fa fa-exclamation-triangle fa-lg fa-fw"></span> Please enter numbers between 1 and 60.</div>
           </div>
           <div class="modal-footer">
             <div class="button-group">
-              <button type="button" id="save">Save</button>
-              <button type="button" id=cancel>Cancel</button>
+              <button type="button" class="save">Save</button>
+              <button type="button" class="cancel">Cancel</button>
             </div>
           </div>
         </div>
@@ -51,22 +51,22 @@
       <div class="timers">
         <div class="timer-card">
           <h2>Work Session</h2>
-          <div class="timer" id="workTimer"></div>
+          <div class="timer work-timer"></div>
         </div>
         <div class="timer-card">
           <h2>Break Session</h2>
-          <div class="timer" id="breakTimer"></div>
+          <div class="timer break-timer"></div>
         </div>
       </div>
       <!-- TIMER BUTTONS -->
       <div class="button-group">
-        <button type="button" class="timer-button" aria-label="play" title="Play" id="play-timer">
+        <button type="button" class="timer-button play-timer" aria-label="play" title="Play">
           <span class="fa fa-play fa-2x"></span>
         </button>
-        <button type="button" class="timer-button" aria-label="pause" title="Pause" id="pause-timer">
+        <button type="button" class="timer-button pause-timer" aria-label="pause" title="Pause">
           <span class="fa fa-pause fa-2x"></span>
         </button>
-        <button type="button" class="timer-button" aria-label="reset" title="Reset" id="reset-timer">
+        <button type="button" class="timer-button reset-timer" aria-label="reset" title="Reset">
           <span class="fa fa-redo-alt fa-2x"></span>
         </button>
       </div>
