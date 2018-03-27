@@ -86,14 +86,14 @@ function displayTimer() {
 
   document.querySelector('.play-timer').addEventListener('click', function() {
     countDown();
-    document.querySelector('.play-timer').setAttribute('style', 'display: none');
-    document.querySelector('.pause-timer').setAttribute('style', 'display: inline-block');
+    document.querySelector('.play-timer').style.display = 'none';
+    document.querySelector('.pause-timer').style.display = 'inline-block';
   });
 
   document.querySelector('.pause-timer').addEventListener('click', function() {
     clearInterval(timer);
-    document.querySelector('.pause-timer').setAttribute('style', 'display: none');
-    document.querySelector('.play-timer').setAttribute('style', 'display: inline-block');
+    document.querySelector('.pause-timer').style.display = 'none';
+    document.querySelector('.play-timer').style.display = 'inline-block';
   });
 }
 
@@ -102,13 +102,13 @@ displayTimer();
 document.querySelector('.reset-timer').addEventListener('click', function() {
   clearInterval(timer);
   setNewTimer();
-  document.querySelector('.pause-timer').setAttribute('style', 'display: none');
-  document.querySelector('.play-timer').setAttribute('style', 'display: inline-block');
+  document.querySelector('.pause-timer').style.display = 'none';
+  document.querySelector('.play-timer').style.display = 'inline-block';
   document.querySelector('title').innerHTML = 'Pomodoro Timer';
 });
 
 document.querySelector('.settings').addEventListener('click', function() {
-  document.getElementById('modal').setAttribute('style', 'display: block');
+  document.getElementById('modal').style.display = 'block';
 });
 
 document.querySelector('.save').addEventListener('click', function() {
@@ -116,26 +116,26 @@ document.querySelector('.save').addEventListener('click', function() {
   var breakTimerInput = document.getElementById('break-timer-input').value;
 
   if (workTimerInput.match(/^[0-9]+$/) && breakTimerInput.match(/^[0-9]+$/) && workTimerInput >= 1 && workTimerInput <= 60 && breakTimerInput >= 1 && breakTimerInput <= 60) {
-    document.querySelector('.error-message').setAttribute('style', 'display: none');
+    document.querySelector('.error-message').style.display = 'none';
     clearInterval(timer);
     setNewTimer();
-    document.getElementById('modal').setAttribute('style', 'display: none');
-    document.querySelector('.pause-timer').setAttribute('style', 'display: none');
-    document.querySelector('.play-timer').setAttribute('style', 'display: inline-block');
+    document.getElementById('modal').style.display = 'none';
+    document.querySelector('.pause-timer').style.display = 'none';
+    document.querySelector('.play-timer').style.display = 'inline-block';
     document.querySelector('title').innerHTML = 'Pomodoro Timer';
   }
   else {
-    document.querySelector('.error-message').setAttribute('style', 'display: block');
+    document.querySelector('.error-message').style.display = 'block';
   }
 });
 
 document.querySelector('.cancel').addEventListener('click', function() {
-  document.getElementById('modal').setAttribute('style', 'display: none');
+  document.getElementById('modal').style.display = 'none';
 });
 
 window.addEventListener('click', function(event) {
 
   if (event.target.id === 'modal') {
-    document.getElementById('modal').setAttribute('style', 'display: none');
+    document.getElementById('modal').style.display = 'none';
   }
 });
