@@ -26,9 +26,8 @@ function setNewTimer() {
 
 function displayTimer() {
   setNewTimer();
-
-  var audio = new Audio('audio/wink-sound-effect.mp3');
-  var audioHasPlayed = false;
+  var audio = new Audio('audio/wink-sound-effect.mp3'),
+  audioHasPlayed = false;
 
   function playAudio() {
     audio.play();
@@ -42,7 +41,6 @@ function displayTimer() {
 
     if (workTimer !== 0) {
       workTimer--;
-
       workMinutes = parseInt(workTimer / 60, 10);
       workSeconds = parseInt(workTimer % 60, 10);
       workMinutes = workMinutes < 10 ? '0' + workMinutes : workMinutes;
@@ -59,7 +57,6 @@ function displayTimer() {
 
       if (breakTimer !== 0) {
         breakTimer--;
-
         breakMinutes = parseInt(breakTimer / 60, 10);
         breakSeconds = parseInt(breakTimer % 60, 10);
         breakMinutes = breakMinutes < 10 ? '0' + breakMinutes : breakMinutes;
@@ -79,11 +76,10 @@ function displayTimer() {
         }
       }
     }
-
     document.querySelector('.work-timer').innerHTML = workMinutes + ':' + workSeconds;
     document.querySelector('.break-timer').innerHTML = breakMinutes + ':' + breakSeconds;
   }
-
+  
   document.querySelector('.play-timer').addEventListener('click', function() {
     countDown();
     document.querySelector('.play-timer').style.display = 'none';
@@ -112,8 +108,8 @@ document.querySelector('.settings').addEventListener('click', function() {
 });
 
 document.querySelector('.save').addEventListener('click', function() {
-  var workTimerInput = document.getElementById('work-timer-input').value;
-  var breakTimerInput = document.getElementById('break-timer-input').value;
+  var workTimerInput = document.getElementById('work-timer-input').value,
+  breakTimerInput = document.getElementById('break-timer-input').value;
 
   if (workTimerInput.match(/^[0-9]+$/) && breakTimerInput.match(/^[0-9]+$/) && workTimerInput >= 1 && workTimerInput <= 60 && breakTimerInput >= 1 && breakTimerInput <= 60) {
     document.querySelector('.error-message').style.display = 'none';
