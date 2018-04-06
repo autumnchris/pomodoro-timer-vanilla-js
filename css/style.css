@@ -179,7 +179,7 @@ h1 {
 .timer-button,
 .timer-button:active,
 .timer-button:focus {
-  background-color: #1ad1ff;
+  background: #1ad1ff;
   border: 2px solid #1ad1ff;
   color: #333;
   height: 60px;
@@ -187,7 +187,7 @@ h1 {
   width: 60px;
 }
 .timer-button:hover {
-  background-color: #333;
+  background: transparent;
   color: #1ad1ff;
 }
 
