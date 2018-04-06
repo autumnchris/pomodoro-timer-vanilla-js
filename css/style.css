@@ -80,12 +80,22 @@ h1 {
 }
 
 .modal-content {
+  animation: slideIn 0.3s ease-out;
   background-color: #fff;
   border-radius: 5px;
   color: #333;
   margin: 15% auto;
   max-width: 400px;
   width: 70%;
+}
+
+@keyframes slideIn {
+  from {
+    margin-top: 0;
+  }
+  to {
+    margin-top: 15%;
+  }
 }
 
 .modal-header {
