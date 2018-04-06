@@ -55,7 +55,7 @@ h1 {
 .settings,
 .settings:active,
 .settings:focus {
-  background-color: #333;
+  background: transparent;
   border: none;
   color: #1ad1ff;
   float: right;
@@ -64,11 +64,11 @@ h1 {
 }
 
 .settings:hover {
-  background-color: #404040;
+  background: rgba(13, 13, 13, 0.2);
 }
 
 #modal {
-  background-color: rgba(0,0,0,0.75);
+  background-color: rgba(0, 0, 0, 0.75);
   display: none;
   height: 100%;
   left: 0;
@@ -155,7 +155,7 @@ h1 {
 }
 
 .timer-card {
-  background-color: #404040;
+  background-color: rgba(13, 13, 13, 0.2);
   border-radius: 4px;
   display: inline-block;
   margin: 10px auto;
@@ -196,7 +196,7 @@ h1 {
 }
 
 footer {
-  background-color: #404040;
+  background-color: rgba(13, 13, 13, 0.2);
   bottom: 0;
   font-size: 1.2rem;
   left: 0;
