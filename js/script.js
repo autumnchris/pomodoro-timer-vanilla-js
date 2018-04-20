@@ -1,10 +1,10 @@
-var timer,
-workTimer,
-breakTimer,
-workMinutes,
-workSeconds,
-breakMinutes,
-breakSeconds;
+let timer;
+let workTimer;
+let breakTimer;
+let workMinutes;
+let workSeconds;
+let breakMinutes;
+let breakSeconds;
 
 function setNewTimer() {
   workTimer = document.getElementById('work-timer-input').value * 60;
@@ -15,13 +15,13 @@ function setNewTimer() {
   breakMinutes = parseInt(breakTimer / 60, 10);
   breakSeconds = parseInt(breakTimer % 60, 10);
 
-  workMinutes = workMinutes < 10 ? '0' + workMinutes : workMinutes;
-  workSeconds = workSeconds < 10 ? '0' + workSeconds : workSeconds;
-  breakMinutes = breakMinutes < 10 ? '0' + breakMinutes : breakMinutes;
-  breakSeconds = breakSeconds < 10 ? '0' + breakSeconds : breakSeconds;
+  workMinutes = workMinutes < 10 ? `0${workMinutes}` : workMinutes;
+  workSeconds = workSeconds < 10 ? `0${workSeconds}` : workSeconds;
+  breakMinutes = breakMinutes < 10 ? `0${breakMinutes}` : breakMinutes;
+  breakSeconds = breakSeconds < 10 ? `0${breakSeconds}` : breakSeconds;
 
-  document.querySelector('.work-timer').innerHTML = workMinutes + ':' + workSeconds;
-  document.querySelector('.break-timer').innerHTML = breakMinutes + ':' + breakSeconds;
+  document.querySelector('.work-timer').innerHTML = `${workMinutes}:${workSeconds}`;
+  document.querySelector('.break-timer').innerHTML = `${breakMinutes}:${breakSeconds}`;
 }
 
 function displayTimer() {
@@ -43,10 +43,10 @@ function displayTimer() {
       workTimer--;
       workMinutes = parseInt(workTimer / 60, 10);
       workSeconds = parseInt(workTimer % 60, 10);
-      workMinutes = workMinutes < 10 ? '0' + workMinutes : workMinutes;
-      workSeconds = workSeconds < 10 ? '0' + workSeconds : workSeconds;
+      workMinutes = workMinutes < 10 ? `0${workMinutes}` : workMinutes;
+      workSeconds = workSeconds < 10 ? `0${workSeconds}` : workSeconds;
 
-      document.querySelector('title').innerHTML = 'Work – ' + workMinutes + ':' + workSeconds;
+      document.querySelector('title').innerHTML = `Work – ${workMinutes}:${workSeconds}`;
     }
     else {
 
@@ -59,10 +59,10 @@ function displayTimer() {
         breakTimer--;
         breakMinutes = parseInt(breakTimer / 60, 10);
         breakSeconds = parseInt(breakTimer % 60, 10);
-        breakMinutes = breakMinutes < 10 ? '0' + breakMinutes : breakMinutes;
-        breakSeconds = breakSeconds < 10 ? '0' + breakSeconds : breakSeconds;
+        breakMinutes = breakMinutes < 10 ? `0${breakMinutes}` : breakMinutes;
+        breakSeconds = breakSeconds < 10 ? `0${breakSeconds}` : breakSeconds;
 
-        document.querySelector('title').innerHTML = 'Break – ' + breakMinutes + ':' + breakSeconds;
+        document.querySelector('title').innerHTML = `Break – ${breakMinutes}:${breakSeconds}`;
       }
       else {
         audioHasPlayed = false;
@@ -76,17 +76,17 @@ function displayTimer() {
         }
       }
     }
-    document.querySelector('.work-timer').innerHTML = workMinutes + ':' + workSeconds;
-    document.querySelector('.break-timer').innerHTML = breakMinutes + ':' + breakSeconds;
+    document.querySelector('.work-timer').innerHTML = `${workMinutes}:${workSeconds}`;
+    document.querySelector('.break-timer').innerHTML = `${breakMinutes}:${breakSeconds}`;
   }
-  
-  document.querySelector('.play-timer').addEventListener('click', function() {
+
+  document.querySelector('.play-timer').addEventListener('click', () => {
     countDown();
     document.querySelector('.play-timer').style.display = 'none';
     document.querySelector('.pause-timer').style.display = 'inline-block';
   });
 
-  document.querySelector('.pause-timer').addEventListener('click', function() {
+  document.querySelector('.pause-timer').addEventListener('click', () => {
     clearInterval(timer);
     document.querySelector('.pause-timer').style.display = 'none';
     document.querySelector('.play-timer').style.display = 'inline-block';
@@ -95,7 +95,7 @@ function displayTimer() {
 
 displayTimer();
 
-document.querySelector('.reset-timer').addEventListener('click', function() {
+document.querySelector('.reset-timer').addEventListener('click', () => {
   clearInterval(timer);
   setNewTimer();
   document.querySelector('.pause-timer').style.display = 'none';
@@ -103,13 +103,13 @@ document.querySelector('.reset-timer').addEventListener('click', function() {
   document.querySelector('title').innerHTML = 'Pomodoro Timer';
 });
 
-document.querySelector('.settings').addEventListener('click', function() {
+document.querySelector('.settings').addEventListener('click', () => {
   document.getElementById('modal').style.display = 'block';
 });
 
-document.querySelector('.save').addEventListener('click', function() {
-  var workTimerInput = document.getElementById('work-timer-input').value,
-  breakTimerInput = document.getElementById('break-timer-input').value;
+document.querySelector('.save').addEventListener('click', () => {
+  const workTimerInput = document.getElementById('work-timer-input').value;
+  const breakTimerInput = document.getElementById('break-timer-input').value;
 
   if (workTimerInput.match(/^[0-9]+$/) && breakTimerInput.match(/^[0-9]+$/) && workTimerInput >= 1 && workTimerInput <= 60 && breakTimerInput >= 1 && breakTimerInput <= 60) {
     document.querySelector('.error-message').style.display = 'none';
@@ -125,11 +125,11 @@ document.querySelector('.save').addEventListener('click', function() {
   }
 });
 
-document.querySelector('.cancel').addEventListener('click', function() {
+document.querySelector('.cancel').addEventListener('click', () => {
   document.getElementById('modal').style.display = 'none';
 });
 
-window.addEventListener('click', function(event) {
+window.addEventListener('click', event => {
 
   if (event.target.id === 'modal') {
     document.getElementById('modal').style.display = 'none';
