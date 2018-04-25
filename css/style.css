@@ -1,21 +1,15 @@
-* {
-  box-sizing: border-box;
-}
-
 *:focus {
   box-shadow: 0 0 3px 3px rgba(65, 180, 250, 0.8);
-  outline: none !important;
+  outline: none;
 }
 
-a,
-a:visited,
-a:active,
-a:focus {
-  text-decoration: none;
+html {
+  background: #333;
+  background: linear-gradient(120deg, #262626, #4d4d4d) fixed;
 }
 
-a:hover {
-  text-decoration: underline;
+body {
+  text-align: center;
 }
 
 button,
@@ -23,32 +17,16 @@ button:hover,
 button:active,
 button:focus {
   border-radius: 3px;
-  cursor: pointer;
-}
-
-html {
-  font-size: 10px;
-  height: 100%;
-}
-
-body {
-  background: #333;
-  background: linear-gradient(120deg, #262626, #4d4d4d) fixed;
-  color: #fff;
-  font: 14px Helvetica, Arial, sans-serif;
-  letter-spacing: 1px;
-  min-height: 100%;
-  padding: 1% 20px 70px;
-  position: relative;
-  text-align: center;
 }
 
 h1 {
+  color: #fff;
   display: inline-block;
   float: left;
-  font-size: 1.2rem;
+  font-size: 0.7rem;
   font-weight: 300;
   letter-spacing: 8px;
+  margin-top: 15px;
   text-transform: uppercase;
 }
 
@@ -56,11 +34,11 @@ h1 {
 .settings:active,
 .settings:focus {
   background: transparent;
-  border: none;
   color: #1ad1ff;
   float: right;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  margin-top: 8px;
+  width: 30px;
 }
 
 .settings:hover {
@@ -68,12 +46,14 @@ h1 {
 }
 
 #modal {
-  background-color: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.75);
+  bottom: 0;
   display: none;
   height: 100%;
   left: 0;
   overflow: auto;
   position: fixed;
+  right: 0;
   top: 0;
   width: 100%;
   z-index: 1;
@@ -81,9 +61,8 @@ h1 {
 
 .modal-content {
   animation: slideIn 0.3s ease-out;
-  background-color: #fff;
+  background: #fff;
   border-radius: 5px;
-  color: #333;
   margin: 10% auto;
   max-width: 400px;
   width: 70%;
@@ -104,9 +83,8 @@ h1 {
 }
 
 .modal-header h2 {
-  font-size: 1.8rem;
+  font-size: 1.1rem;
   font-weight: 300;
-  margin: 0;
   text-align: left;
 }
 
@@ -119,21 +97,25 @@ h1 {
   text-align: left;
 }
 
+.modal-body label {
+  font-size: 0.9rem;
+}
+
 .modal-body input {
-  border: none;
   border-bottom: 1px solid #333;
-  border-radius: 0;
+  font-size: 0.9rem;
   max-width: 40px;
 }
 
 .modal-body .error-message {
-  background-color: #fcf8e3;
+  background: #fcf8e3;
   border: 1px solid #faebcc;
   border-radius: 3px;
   color: #8a6d3b;
   display: none;
+  font-size: 0.9rem;
   line-height: 20px;
-  margin: 10px 0;
+  margin: 12px 0;
   padding: 15px 10px;
   width: 100%;
 }
@@ -147,43 +129,47 @@ h1 {
 .modal-footer button,
 .modal-footer button:active,
 .modal-footer button:focus {
-  background-color: #404040;
-  border: none;
+  background: #404040;
   color: #1ad1ff;
-  letter-spacing: 1px;
+  font-size: 0.9rem;
   margin: 0 3px;
   padding: 10px;
 }
 
 .modal-footer button:hover {
-  background-color: #333;
+  background: #333;
+}
+
+main {
+  padding-top: 12%;
+  padding-bottom: 70px;
 }
 
 .timers {
-  margin: 12% auto 0;
+  margin: auto;
   max-width: 650px;
 }
 
 .timer-card {
-  background-color: rgba(13, 13, 13, 0.2);
+  background: rgba(13, 13, 13, 0.2);
   border-radius: 4px;
   display: inline-block;
   margin: 10px auto;
-  padding: 20px;
   max-width: 300px;
+  padding: 20px;
   width: 100%;
 }
 
 .timer-card h2 {
-  font-size: 1.1em;
+  color: #fff;
   font-weight: 300;
-  margin-top: 0;
   text-align: left;
 }
 
 .timer {
   color: #1ad1ff;
-  font-size: 3em;
+  font-size: 2.5rem;
+  margin-top: 15px;
 }
 
 .timer-button,
@@ -191,11 +177,11 @@ h1 {
 .timer-button:focus {
   background: #1ad1ff;
   border: 2px solid #1ad1ff;
-  color: #333;
-  height: 60px;
-  margin: 8px;
-  width: 60px;
+  height: 45px;
+  margin: 5px;
+  width: 45px;
 }
+
 .timer-button:hover {
   background: transparent;
   color: #1ad1ff;
@@ -206,13 +192,13 @@ h1 {
 }
 
 footer {
-  background-color: rgba(13, 13, 13, 0.2);
+  background: rgba(13, 13, 13, 0.2);
   bottom: 0;
-  font-size: 1.2rem;
+  color: #fff;
+  font-size: 0.8rem;
   left: 0;
   letter-spacing: 2px;
-  margin: 0;
-  padding: 12px 0;
+  padding: 14px 0;
   position: absolute;
   right: 0;
   width: 100%;
@@ -229,13 +215,13 @@ footer a:focus {
 @media only screen and (min-width: 330px) {
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 0.9rem;
   }
 }
 
 @media only screen and (min-width: 640px) {
 
   .timer-card {
-    margin: 10px
+    margin: 10px;
   }
 }

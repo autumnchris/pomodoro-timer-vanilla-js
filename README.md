@@ -17,7 +17,6 @@ Project also meets the requirements for the [Pairing Project assignment](https:/
 * HTML5
 * [Font Awesome](https://fontawesome.com)
 * [Wink sound effect](http://www.orangefreesounds.com)
-* [Normalize.css](http://necolas.github.io/normalize.css)
 
 ## Demo
 

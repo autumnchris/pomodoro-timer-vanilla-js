@@ -1,0 +1,58 @@
+html,
+body,
+header,
+main,
+footer,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+button,
+form,
+label,
+input {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  padding: 0 20px;
+  position: relative;
+}
+
+a,
+a:visited,
+a:active,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button,
+button:hover,
+button:active,
+button:focus {
+  cursor: pointer;
+}
