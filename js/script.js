@@ -134,8 +134,7 @@ document.querySelector('.timer-settings-form').addEventListener('submit', (event
   handleSubmit(event);
 });
 
-document.querySelector('.cancel').addEventListener('click', (event) => {
-  event.preventDefault();
+document.querySelector('.cancel').addEventListener('click', () => {
   document.getElementById('modal').style.display = 'none';
 });
 
