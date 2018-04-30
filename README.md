@@ -16,6 +16,7 @@ Project also meets the requirements for the [Pairing Project assignment](https:/
 * CSS3
 * HTML5
 * [Font Awesome](https://fontawesome.com)
+* LocalStorage
 * [Wink sound effect](http://www.orangefreesounds.com)
 
 ## Demo
