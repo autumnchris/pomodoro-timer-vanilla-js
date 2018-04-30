@@ -130,7 +130,7 @@ document.querySelector('.settings').addEventListener('click', () => {
   document.getElementById('modal').style.display = 'block';
 });
 
-document.querySelector('.timer-settings-form').addEventListener('submit', (event) => {
+document.querySelector('.settings-form').addEventListener('submit', (event) => {
   handleSubmit(event);
 });
 
