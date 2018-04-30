@@ -24,24 +24,22 @@
             <h2>Timer Settings</h2>
           </div>
           <div class="modal-body">
-            <form>
+            <form class="settings-form">
               <div class="form-group">
                 <label for="work-timer-input">Set Work Time:</label>
-                <input type="text" value="25" id="work-timer-input">
+                <input type="text" value="25" id="work-timer-input" required>
               </div>
               <div class="form-group">
                 <label for="break-timer-input">Set Break Time:</label>
-                <input type="text" value="5" id="break-timer-input">
+                <input type="text" value="5" id="break-timer-input" required>
+              </div>
+              <!-- ERROR MESSAGE -->
+              <div class="error-message"><span class="fa fa-exclamation-triangle fa-lg fa-fw"></span> Please enter numbers between 1 and 60.</div>
+              <div class="button-group">
+                <input type="submit" value="Save">
+                <input type="button" class="cancel" value="Cancel">
               </div>
             </form>
-            <!-- ERROR MESSAGE -->
-            <div class="error-message"><span class="fa fa-exclamation-triangle fa-lg fa-fw"></span> Please enter numbers between 1 and 60.</div>
-          </div>
-          <div class="modal-footer">
-            <div class="button-group">
-              <button type="button" class="save">Save</button>
-              <button type="button" class="cancel">Cancel</button>
-            </div>
           </div>
         </div>
       </div>

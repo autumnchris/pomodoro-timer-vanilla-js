@@ -53,6 +53,14 @@ a:hover {
 button,
 button:hover,
 button:active,
-button:focus {
+button:focus,
+input[type=submit],
+input[type=submit]:hover,
+input[type=submit]:active,
+input[type=submit]:focus,
+input[type=button],
+input[type=button]:hover,
+input[type=button]:active,
+input[type=button]:focus {
   cursor: pointer;
 }

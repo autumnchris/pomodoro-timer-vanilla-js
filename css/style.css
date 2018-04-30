@@ -15,7 +15,15 @@ body {
 button,
 button:hover,
 button:active,
-button:focus {
+button:focus,
+input[type=submit],
+input[type=submit]:hover,
+input[type=submit]:active,
+input[type=submit]:focus,
+input[type=button],
+input[type=button]:hover,
+input[type=button]:active,
+input[type=button]:focus {
   border-radius: 3px;
 }
 
@@ -89,7 +97,7 @@ h1 {
 }
 
 .modal-body {
-  padding: 20px;
+  padding: 15px;
 }
 
 .modal-body .form-group {
@@ -101,7 +109,7 @@ h1 {
   font-size: 0.9rem;
 }
 
-.modal-body input {
+.modal-body input[type=text] {
   border-bottom: 1px solid #333;
   font-size: 0.9rem;
   max-width: 40px;
@@ -120,15 +128,16 @@ h1 {
   width: 100%;
 }
 
-.modal-footer {
-  border-top: 1px solid #e6e6e6;
-  padding: 10px;
+.modal-body .button-group {
   text-align: right;
 }
 
-.modal-footer button,
-.modal-footer button:active,
-.modal-footer button:focus {
+.modal-body input[type=submit],
+.modal-body input[type=submit]:active,
+.modal-body input[type=submit]:focus,
+.modal-body input[type=button],
+.modal-body input[type=button]:active,
+.modal-body input[type=button]:focus {
   background: #404040;
   color: #1ad1ff;
   font-size: 0.9rem;
@@ -136,7 +145,8 @@ h1 {
   padding: 10px;
 }
 
-.modal-footer button:hover {
+.modal-body input[type=submit]:hover,
+.modal-body input[type=button]:hover {
   background: #333;
 }
 
