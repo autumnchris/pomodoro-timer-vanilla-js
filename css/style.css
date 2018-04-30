@@ -105,13 +105,8 @@ h1 {
   text-align: left;
 }
 
-.modal-body label {
-  font-size: 0.9rem;
-}
-
 .modal-body input[type=text] {
   border-bottom: 1px solid #333;
-  font-size: 0.9rem;
   max-width: 40px;
 }
 
@@ -121,7 +116,6 @@ h1 {
   border-radius: 3px;
   color: #8a6d3b;
   display: none;
-  font-size: 0.9rem;
   line-height: 20px;
   margin: 12px 0;
   padding: 15px 10px;
@@ -140,7 +134,6 @@ h1 {
 .modal-body input[type=button]:focus {
   background: #404040;
   color: #1ad1ff;
-  font-size: 0.9rem;
   margin: 0 3px;
   padding: 10px;
 }
@@ -172,6 +165,7 @@ main {
 
 .timer-card h2 {
   color: #fff;
+  font-size: 1rem;
   font-weight: 300;
   text-align: left;
 }

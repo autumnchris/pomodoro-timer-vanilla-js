@@ -33,6 +33,7 @@ html {
 }
 
 body {
+  font-size: 0.9rem;
   min-height: 100%;
   padding: 0 20px;
   position: relative;
