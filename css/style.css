@@ -8,10 +8,6 @@ html {
   background: linear-gradient(120deg, #262626, #4d4d4d) fixed;
 }
 
-body {
-  text-align: center;
-}
-
 button,
 button:hover,
 button:active,

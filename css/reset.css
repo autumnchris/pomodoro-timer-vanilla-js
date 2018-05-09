@@ -28,6 +28,7 @@ input {
   line-height: 1;
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 html {
@@ -55,6 +56,10 @@ a:hover {
 
 span {
   color: inherit;
+}
+
+input {
+  text-align: left;
 }
 
 button,
