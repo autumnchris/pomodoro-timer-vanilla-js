@@ -1,26 +1,32 @@
-let timer;
-let workTimer = JSON.parse(localStorage.getItem('workTimer')) || 1500;
-let breakTimer = JSON.parse(localStorage.getItem('breakTimer')) || 300;
-let workMinutes;
-let workSeconds;
-let breakMinutes;
-let breakSeconds;
+const timerData = {
+  timer: null,
+  work: {
+    timer: JSON.parse(localStorage.getItem('workTimer')) || 1500,
+    minutes: null,
+    seconds: null
+  },
+  break: {
+    timer: JSON.parse(localStorage.getItem('breakTimer')) || 300,
+    minutes: null,
+    seconds: null
+  }
+};
 
 function setNewTimer() {
-  workMinutes = parseInt(workTimer / 60, 10);
-  workSeconds = parseInt(workTimer % 60, 10);
-  breakMinutes = parseInt(breakTimer / 60, 10);
-  breakSeconds = parseInt(breakTimer % 60, 10);
+  timerData.work.minutes = parseInt(timerData.work.timer / 60, 10);
+  timerData.work.seconds = parseInt(timerData.work.timer % 60, 10);
+  timerData.break.minutes = parseInt(timerData.break.timer / 60, 10);
+  timerData.break.seconds = parseInt(timerData.break.timer % 60, 10);
 
-  workMinutes = workMinutes < 10 ? `0${workMinutes}` : workMinutes;
-  workSeconds = workSeconds < 10 ? `0${workSeconds}` : workSeconds;
-  breakMinutes = breakMinutes < 10 ? `0${breakMinutes}` : breakMinutes;
-  breakSeconds = breakSeconds < 10 ? `0${breakSeconds}` : breakSeconds;
+  timerData.work.minutes = timerData.work.minutes < 10 ? `0${timerData.work.minutes}` : timerData.work.minutes;
+  timerData.work.seconds = timerData.work.seconds < 10 ? `0${timerData.work.seconds}` : timerData.work.seconds;
+  timerData.break.minutes = timerData.break.minutes < 10 ? `0${timerData.break.minutes}` : timerData.break.minutes;
+  timerData.break.seconds = timerData.break.seconds < 10 ? `0${timerData.break.seconds}` : timerData.break.seconds;
 
-  document.querySelector('.work-timer').innerHTML = `${workMinutes}:${workSeconds}`;
-  document.querySelector('.break-timer').innerHTML = `${breakMinutes}:${breakSeconds}`;
-  document.getElementById('work-timer-input').value = workTimer / 60;
-  document.getElementById('break-timer-input').value = breakTimer / 60;
+  document.querySelector('.work-timer').innerHTML = `${timerData.work.minutes}:${timerData.work.seconds}`;
+  document.querySelector('.break-timer').innerHTML = `${timerData.break.minutes}:${timerData.break.seconds}`;
+  document.getElementById('work-timer-input').value = timerData.work.timer / 60;
+  document.getElementById('break-timer-input').value = timerData.break.timer / 60;
 }
 
 function displayTimer() {
@@ -29,19 +35,19 @@ function displayTimer() {
   let audioHasPlayed = false;
 
   function countDown() {
-    timer = setInterval(playTimer, 1000);
+    timerData.timer = setInterval(playTimer, 1000);
   }
 
   function playTimer() {
 
-    if (workTimer !== 0) {
-      workTimer--;
-      workMinutes = parseInt(workTimer / 60, 10);
-      workSeconds = parseInt(workTimer % 60, 10);
-      workMinutes = workMinutes < 10 ? `0${workMinutes}` : workMinutes;
-      workSeconds = workSeconds < 10 ? `0${workSeconds}` : workSeconds;
+    if (timerData.work.timer !== 0) {
+      timerData.work.timer--;
+      timerData.work.minutes = parseInt(timerData.work.timer / 60, 10);
+      timerData.work.seconds = parseInt(timerData.work.timer % 60, 10);
+      timerData.work.minutes = timerData.work.minutes < 10 ? `0${timerData.work.minutes}` : timerData.work.minutes;
+      timerData.work.seconds = timerData.work.seconds < 10 ? `0${timerData.work.seconds}` : timerData.work.seconds;
 
-      document.querySelector('title').innerHTML = `Work – ${workMinutes}:${workSeconds}`;
+      document.querySelector('title').innerHTML = `Work – ${timerData.work.minutes}:${timerData.work.seconds}`;
     }
     else {
 
@@ -50,14 +56,14 @@ function displayTimer() {
         audioHasPlayed = true;
       }
 
-      if (breakTimer !== 0) {
-        breakTimer--;
-        breakMinutes = parseInt(breakTimer / 60, 10);
-        breakSeconds = parseInt(breakTimer % 60, 10);
-        breakMinutes = breakMinutes < 10 ? `0${breakMinutes}` : breakMinutes;
-        breakSeconds = breakSeconds < 10 ? `0${breakSeconds}` : breakSeconds;
+      if (timerData.break.timer !== 0) {
+        timerData.break.timer--;
+        timerData.break.minutes = parseInt(timerData.break.timer / 60, 10);
+        timerData.break.seconds = parseInt(timerData.break.timer % 60, 10);
+        timerData.break.minutes = timerData.break.minutes < 10 ? `0${timerData.break.minutes}` : timerData.break.minutes;
+        timerData.break.seconds = timerData.break.seconds < 10 ? `0${timerData.break.seconds}` : timerData.break.seconds;
 
-        document.querySelector('title').innerHTML = `Break – ${breakMinutes}:${breakSeconds}`;
+        document.querySelector('title').innerHTML = `Break – ${timerData.break.minutes}:${timerData.break.seconds}`;
       }
       else {
         audioHasPlayed = false;
@@ -65,17 +71,17 @@ function displayTimer() {
         if (audioHasPlayed === false) {
           audio.play();
           audioHasPlayed = true;
-          clearInterval(timer);
-          workTimer = JSON.parse(localStorage.getItem('workTimer')) || 1500;
-          breakTimer = JSON.parse(localStorage.getItem('breakTimer')) || 300;
+          clearInterval(timerData.timer);
+          timerData.work.timer = JSON.parse(localStorage.getItem('workTimer')) || 1500;
+          timerData.break.timer = JSON.parse(localStorage.getItem('breakTimer')) || 300;
           setNewTimer();
           countDown();
           audioHasPlayed = false;
         }
       }
     }
-    document.querySelector('.work-timer').innerHTML = `${workMinutes}:${workSeconds}`;
-    document.querySelector('.break-timer').innerHTML = `${breakMinutes}:${breakSeconds}`;
+    document.querySelector('.work-timer').innerHTML = `${timerData.work.minutes}:${timerData.work.seconds}`;
+    document.querySelector('.break-timer').innerHTML = `${timerData.break.minutes}:${timerData.break.seconds}`;
   }
 
   document.querySelector('.play-timer').addEventListener('click', () => {
@@ -85,7 +91,7 @@ function displayTimer() {
   });
 
   document.querySelector('.pause-timer').addEventListener('click', () => {
-    clearInterval(timer);
+    clearInterval(timerData.timer);
     document.querySelector('.pause-timer').style.display = 'none';
     document.querySelector('.play-timer').style.display = 'inline-block';
   });
@@ -100,12 +106,12 @@ function handleSubmit(event) {
 
   if (!isNaN(workTimerInput) && !isNaN(breakTimerInput) && workTimerInput >= 1 && workTimerInput <= 60 && breakTimerInput >= 1 && breakTimerInput <= 60) {
     document.querySelector('.error-message').style.display = 'none';
-    clearInterval(timer);
-    workTimer = document.getElementById('work-timer-input').value * 60;
-    breakTimer = document.getElementById('break-timer-input').value * 60;
+    clearInterval(timerData.timer);
+    timerData.work.timer = document.getElementById('work-timer-input').value * 60;
+    timerData.break.timer = document.getElementById('break-timer-input').value * 60;
     setNewTimer();
-    localStorage.setItem('workTimer', JSON.stringify(workTimer));
-    localStorage.setItem('breakTimer', JSON.stringify(breakTimer));
+    localStorage.setItem('workTimer', JSON.stringify(timerData.work.timer));
+    localStorage.setItem('breakTimer', JSON.stringify(timerData.break.timer));
     document.getElementById('modal').style.display = 'none';
     document.querySelector('.pause-timer').style.display = 'none';
     document.querySelector('.play-timer').style.display = 'inline-block';
@@ -117,9 +123,9 @@ function handleSubmit(event) {
 }
 
 document.querySelector('.reset-timer').addEventListener('click', () => {
-  clearInterval(timer);
-  workTimer = JSON.parse(localStorage.getItem('workTimer')) || 1500;
-  breakTimer = JSON.parse(localStorage.getItem('breakTimer')) || 300;
+  clearInterval(timerData.timer);
+  timerData.work.timer = JSON.parse(localStorage.getItem('workTimer')) || 1500;
+  timerData.break.timer = JSON.parse(localStorage.getItem('breakTimer')) || 300;
   setNewTimer();
   document.querySelector('.pause-timer').style.display = 'none';
   document.querySelector('.play-timer').style.display = 'inline-block';
