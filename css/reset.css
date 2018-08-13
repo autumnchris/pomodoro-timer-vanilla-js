@@ -15,7 +15,8 @@ button,
 a,
 form,
 label,
-input {
+input,
+p {
   background: transparent;
   border: 0;
   border-radius: 0;

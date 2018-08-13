@@ -107,13 +107,13 @@ h1 {
 }
 
 .modal-body .error-message {
-  background: #fcf8e3;
-  border: 1px solid #faebcc;
+  background: hsl(349, 96%, 95%);
+  border: 1px solid hsl(349, 96%, 90%);
   border-radius: 3px;
-  color: #8a6d3b;
+  color: hsl(349, 96%, 26%);
   display: none;
   line-height: 20px;
-  margin: 12px 0;
+  margin: 15px 0;
   padding: 15px 10px;
   width: 100%;
 }
