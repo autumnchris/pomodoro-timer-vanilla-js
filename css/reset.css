@@ -48,6 +48,7 @@ a:visited,
 a:active,
 a:focus {
   color: inherit;
+  letter-spacing: inherit;
   text-decoration: none;
 }
 
@@ -57,6 +58,7 @@ a:hover {
 
 span {
   color: inherit;
+  letter-spacing: inherit;
 }
 
 input {
