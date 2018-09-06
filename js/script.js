@@ -31,7 +31,6 @@ function setNewTimer() {
 
 function displayTimer() {
   setNewTimer();
-  const audio = new Audio('audio/wink-sound-effect.mp3');
   let audioHasPlayed = false;
 
   function countDown() {
@@ -52,7 +51,7 @@ function displayTimer() {
     else {
 
       if (audioHasPlayed === false) {
-        audio.play();
+        document.querySelector('audio').play();
         audioHasPlayed = true;
       }
 
@@ -69,7 +68,7 @@ function displayTimer() {
         audioHasPlayed = false;
 
         if (audioHasPlayed === false) {
-          audio.play();
+          document.querySelector('audio').play();
           audioHasPlayed = true;
           clearInterval(timerData.timer);
           timerData.work.timer = JSON.parse(localStorage.getItem('workTimer')) || 1500;
