@@ -47,7 +47,7 @@ function displayTimer() {
       timerData.work.minutes = timerData.work.minutes < 10 ? `0${timerData.work.minutes}` : timerData.work.minutes;
       timerData.work.seconds = timerData.work.seconds < 10 ? `0${timerData.work.seconds}` : timerData.work.seconds;
 
-      document.querySelector('title').innerHTML = `Work – ${timerData.work.minutes}:${timerData.work.seconds}`;
+      document.title = `Work – ${timerData.work.minutes}:${timerData.work.seconds}`;
     }
     else {
 
@@ -63,7 +63,7 @@ function displayTimer() {
         timerData.break.minutes = timerData.break.minutes < 10 ? `0${timerData.break.minutes}` : timerData.break.minutes;
         timerData.break.seconds = timerData.break.seconds < 10 ? `0${timerData.break.seconds}` : timerData.break.seconds;
 
-        document.querySelector('title').innerHTML = `Break – ${timerData.break.minutes}:${timerData.break.seconds}`;
+        document.title = `Break – ${timerData.break.minutes}:${timerData.break.seconds}`;
       }
       else {
         audioHasPlayed = false;
@@ -115,7 +115,7 @@ function handleSubmit(event) {
     document.getElementById('modal').style.display = 'none';
     document.querySelector('.pause-timer').style.display = 'none';
     document.querySelector('.play-timer').style.display = 'inline-block';
-    document.querySelector('title').innerHTML = 'Pomodoro Timer';
+    document.title = 'Pomodoro Timer';
   }
   else {
     document.querySelector('.error-message').style.display = 'block';
@@ -129,7 +129,7 @@ document.querySelector('.reset-timer').addEventListener('click', () => {
   setNewTimer();
   document.querySelector('.pause-timer').style.display = 'none';
   document.querySelector('.play-timer').style.display = 'inline-block';
-  document.querySelector('title').innerHTML = 'Pomodoro Timer';
+  document.title = 'Pomodoro Timer';
 });
 
 document.querySelector('.settings').addEventListener('click', () => {
