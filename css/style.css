@@ -140,11 +140,15 @@ h1 {
 }
 
 main {
-  padding-top: 12%;
+  padding-top: 18%;
   padding-bottom: 70px;
 }
 
 .timers {
+  display: grid;
+  grid-row-gap: 20px;
+  grid-template-columns: 90%;
+  justify-content: space-evenly;
   margin: auto;
   max-width: 650px;
 }
@@ -152,8 +156,7 @@ main {
 .timer-card {
   background: rgba(13, 13, 13, 0.2);
   border-radius: 4px;
-  display: inline-block;
-  margin: 10px auto;
+  margin: auto;
   max-width: 300px;
   padding: 20px;
   width: 100%;
@@ -172,13 +175,20 @@ main {
   margin-top: 15px;
 }
 
+.timer-buttons {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  margin-top: 10px;
+}
+
 .timer-button,
 .timer-button:active,
 .timer-button:focus {
   background: #1ad1ff;
   border: 2px solid #1ad1ff;
   height: 45px;
-  margin: 5px;
   width: 45px;
 }
 
@@ -221,7 +231,7 @@ footer a:focus {
 
 @media only screen and (min-width: 640px) {
 
-  .timer-card {
-    margin: 10px;
+  .timers {
+    grid-template-columns: 45% 45%;
   }
 }
