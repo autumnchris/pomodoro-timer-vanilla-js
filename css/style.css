@@ -144,15 +144,6 @@ main {
   padding-bottom: 70px;
 }
 
-.timers {
-  display: grid;
-  grid-row-gap: 20px;
-  grid-template-columns: 90%;
-  justify-content: space-evenly;
-  margin: auto;
-  max-width: 650px;
-}
-
 .timer-card {
   background: rgba(13, 13, 13, 0.2);
   border-radius: 4px;
@@ -226,12 +217,5 @@ footer a:focus {
 
   h1 {
     font-size: 0.9rem;
-  }
-}
-
-@media only screen and (min-width: 640px) {
-
-  .timers {
-    grid-template-columns: 45% 45%;
   }
 }

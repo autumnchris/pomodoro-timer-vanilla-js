@@ -1,86 +1,86 @@
-const timerData = {
-  timer: null,
-  work: {
-    timer: JSON.parse(localStorage.getItem('workTimer')) || 1500,
-    minutes: null,
-    seconds: null
-  },
-  break: {
-    timer: JSON.parse(localStorage.getItem('breakTimer')) || 300,
-    minutes: null,
-    seconds: null
-  }
-};
-
-function setNewTimer() {
-  timerData.work.minutes = parseInt(timerData.work.timer / 60, 10);
-  timerData.work.seconds = parseInt(timerData.work.timer % 60, 10);
-  timerData.break.minutes = parseInt(timerData.break.timer / 60, 10);
-  timerData.break.seconds = parseInt(timerData.break.timer % 60, 10);
-
-  timerData.work.minutes = timerData.work.minutes < 10 ? `0${timerData.work.minutes}` : timerData.work.minutes;
-  timerData.work.seconds = timerData.work.seconds < 10 ? `0${timerData.work.seconds}` : timerData.work.seconds;
-  timerData.break.minutes = timerData.break.minutes < 10 ? `0${timerData.break.minutes}` : timerData.break.minutes;
-  timerData.break.seconds = timerData.break.seconds < 10 ? `0${timerData.break.seconds}` : timerData.break.seconds;
-
-  document.querySelector('.work-timer').innerHTML = `${timerData.work.minutes}:${timerData.work.seconds}`;
-  document.querySelector('.break-timer').innerHTML = `${timerData.break.minutes}:${timerData.break.seconds}`;
-  document.getElementById('work-timer-input').value = timerData.work.timer / 60;
-  document.getElementById('break-timer-input').value = timerData.break.timer / 60;
-}
-
 function displayTimer() {
-  setNewTimer();
-  let audioHasPlayed = false;
+  let timer = null;
+  let workLength = JSON.parse(localStorage.getItem('workTimer')) || 25;
+  let breakLength = JSON.parse(localStorage.getItem('breakTimer')) || 5;
+  let currentMinutes = workLength;
+  let currentSeconds = 0;
+  let currentSession = 'Work';
+  let workTimer = workLength * 60;
+  let breakTimer = breakLength * 60;
+
+  currentMinutes = currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes;
+  currentSeconds = currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds;
 
   function countDown() {
-    timerData.timer = setInterval(playTimer, 1000);
+    timer = setInterval(playTimer, 1000);
   }
 
   function playTimer() {
 
-    if (timerData.work.timer !== 0) {
-      timerData.work.timer--;
-      timerData.work.minutes = parseInt(timerData.work.timer / 60, 10);
-      timerData.work.seconds = parseInt(timerData.work.timer % 60, 10);
-      timerData.work.minutes = timerData.work.minutes < 10 ? `0${timerData.work.minutes}` : timerData.work.minutes;
-      timerData.work.seconds = timerData.work.seconds < 10 ? `0${timerData.work.seconds}` : timerData.work.seconds;
-
-      document.title = `Work – ${timerData.work.minutes}:${timerData.work.seconds}`;
+    if (workTimer > 0) {
+      workTimer--;
+      currentMinutes = parseInt(workTimer / 60, 10);
+      currentSeconds = parseInt(workTimer % 60, 10);
     }
     else {
 
-      if (audioHasPlayed === false) {
-        document.querySelector('audio').play();
-        audioHasPlayed = true;
-      }
-
-      if (timerData.break.timer !== 0) {
-        timerData.break.timer--;
-        timerData.break.minutes = parseInt(timerData.break.timer / 60, 10);
-        timerData.break.seconds = parseInt(timerData.break.timer % 60, 10);
-        timerData.break.minutes = timerData.break.minutes < 10 ? `0${timerData.break.minutes}` : timerData.break.minutes;
-        timerData.break.seconds = timerData.break.seconds < 10 ? `0${timerData.break.seconds}` : timerData.break.seconds;
-
-        document.title = `Break – ${timerData.break.minutes}:${timerData.break.seconds}`;
+      if (breakTimer === breakLength * 60 && currentMinutes === 0 && currentSeconds === 0) {
+        document.querySelector('.audio').play();
+        currentMinutes = breakLength;
+        currentSeconds = 0;
+        currentSession = 'Break';
       }
       else {
-        audioHasPlayed = false;
 
-        if (audioHasPlayed === false) {
-          document.querySelector('audio').play();
-          audioHasPlayed = true;
-          clearInterval(timerData.timer);
-          timerData.work.timer = JSON.parse(localStorage.getItem('workTimer')) || 1500;
-          timerData.break.timer = JSON.parse(localStorage.getItem('breakTimer')) || 300;
-          setNewTimer();
+        if (breakTimer > 0) {
+          breakTimer--;
+          currentMinutes= parseInt(breakTimer / 60, 10);
+          currentSeconds = parseInt(breakTimer % 60, 10);
+        }
+        else {
+          document.querySelector('.audio').play();
+          clearInterval(timer);
+          workTimer = workLength * 60;
+          breakTimer = breakLength * 60;
+          currentMinutes = parseInt(workTimer / 60, 10);
+          currentSeconds = parseInt(workTimer % 60, 10);
+          currentSession = 'Work';
           countDown();
-          audioHasPlayed = false;
         }
       }
     }
-    document.querySelector('.work-timer').innerHTML = `${timerData.work.minutes}:${timerData.work.seconds}`;
-    document.querySelector('.break-timer').innerHTML = `${timerData.break.minutes}:${timerData.break.seconds}`;
+    currentMinutes = currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes;
+    currentSeconds = currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds;
+    document.querySelector('.timer').innerHTML = `${currentMinutes}:${currentSeconds}`;
+    document.title = `${currentSession} – ${currentMinutes}:${currentSeconds}`;
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const workTimerInput = document.getElementById('work-timer-input').value;
+    const breakTimerInput = document.getElementById('break-timer-input').value;
+
+    if (!isNaN(workTimerInput) && !isNaN(breakTimerInput) && workTimerInput >= 1 && workTimerInput <= 60 && breakTimerInput >= 1 && breakTimerInput <= 60) {
+      clearInterval(timer);
+      workLength = workTimerInput;
+      breakLength = breakTimerInput;
+      currentMinutes = workLength;
+      currentSeconds = 0;
+      currentSession = 'Work';
+      workTimer = workLength * 60;
+      breakTimer = breakLength * 60;
+      localStorage.setItem('workTimer', JSON.stringify(workLength));
+      localStorage.setItem('breakTimer', JSON.stringify(breakLength));
+      document.querySelector('.error-message').style.display = 'none';
+      document.querySelector('.timer').innerHTML = `${currentMinutes}:${currentSeconds}`;
+      document.getElementById('modal').style.display = 'none';
+      document.querySelector('.pause-timer').style.display = 'none';
+      document.querySelector('.play-timer').style.display = 'inline-block';
+      document.title = 'Pomodoro Timer';
+    }
+    else {
+      document.querySelector('.error-message').style.display = 'block';
+    }
   }
 
   document.querySelector('.play-timer').addEventListener('click', () => {
@@ -90,62 +90,46 @@ function displayTimer() {
   });
 
   document.querySelector('.pause-timer').addEventListener('click', () => {
-    clearInterval(timerData.timer);
+    clearInterval(timer);
+    document.querySelector('.audio').pause();
     document.querySelector('.pause-timer').style.display = 'none';
     document.querySelector('.play-timer').style.display = 'inline-block';
   });
-}
 
-displayTimer();
-
-function handleSubmit(event) {
-  event.preventDefault();
-  const workTimerInput = document.getElementById('work-timer-input').value;
-  const breakTimerInput = document.getElementById('break-timer-input').value;
-
-  if (!isNaN(workTimerInput) && !isNaN(breakTimerInput) && workTimerInput >= 1 && workTimerInput <= 60 && breakTimerInput >= 1 && breakTimerInput <= 60) {
-    document.querySelector('.error-message').style.display = 'none';
-    clearInterval(timerData.timer);
-    timerData.work.timer = document.getElementById('work-timer-input').value * 60;
-    timerData.break.timer = document.getElementById('break-timer-input').value * 60;
-    setNewTimer();
-    localStorage.setItem('workTimer', JSON.stringify(timerData.work.timer));
-    localStorage.setItem('breakTimer', JSON.stringify(timerData.break.timer));
-    document.getElementById('modal').style.display = 'none';
+  document.querySelector('.reset-timer').addEventListener('click', () => {
+    clearInterval(timer);
+    document.querySelector('.audio').pause();
+    document.querySelector('.audio').currentTime = 0;
+    workTimer = workLength * 60;
+    breakTimer = breakLength * 60;
+    currentMinutes = workLength;
+    currentSeconds = 0;
+    currentSession = 'Work';
     document.querySelector('.pause-timer').style.display = 'none';
     document.querySelector('.play-timer').style.display = 'inline-block';
     document.title = 'Pomodoro Timer';
-  }
-  else {
-    document.querySelector('.error-message').style.display = 'block';
-  }
+  });
+
+  document.querySelector('.settings').addEventListener('click', () => {
+    document.getElementById('modal').style.display = 'block';
+  });
+
+  document.querySelector('.settings-form').addEventListener('submit', (event) => {
+    handleSubmit(event);
+  });
+
+  document.querySelector('.cancel').addEventListener('click', () => {
+    document.getElementById('modal').style.display = 'none';
+  });
+
+  window.addEventListener('click', (event) => {
+
+    if (event.target.id === 'modal') {
+      document.getElementById('modal').style.display = 'none';
+    }
+  });
+
+  document.querySelector('.timer').innerHTML = `${currentMinutes}:${currentSeconds}`
 }
 
-document.querySelector('.reset-timer').addEventListener('click', () => {
-  clearInterval(timerData.timer);
-  timerData.work.timer = JSON.parse(localStorage.getItem('workTimer')) || 1500;
-  timerData.break.timer = JSON.parse(localStorage.getItem('breakTimer')) || 300;
-  setNewTimer();
-  document.querySelector('.pause-timer').style.display = 'none';
-  document.querySelector('.play-timer').style.display = 'inline-block';
-  document.title = 'Pomodoro Timer';
-});
-
-document.querySelector('.settings').addEventListener('click', () => {
-  document.getElementById('modal').style.display = 'block';
-});
-
-document.querySelector('.settings-form').addEventListener('submit', (event) => {
-  handleSubmit(event);
-});
-
-document.querySelector('.cancel').addEventListener('click', () => {
-  document.getElementById('modal').style.display = 'none';
-});
-
-window.addEventListener('click', (event) => {
-
-  if (event.target.id === 'modal') {
-    document.getElementById('modal').style.display = 'none';
-  }
-});
+displayTimer();
