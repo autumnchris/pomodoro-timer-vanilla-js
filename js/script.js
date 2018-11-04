@@ -23,8 +23,7 @@ function displayTimer() {
       currentSeconds = parseInt(workTimer % 60, 10);
     }
     else {
-
-      if (breakTimer === breakLength * 60 && currentMinutes === 0 && currentSeconds === 0) {
+      if (breakTimer === breakLength * 60 && Number(currentMinutes) === 0 && Number(currentSeconds) === 0) {
         document.querySelector('.audio').play();
         currentMinutes = breakLength;
         currentSeconds = 0;
@@ -51,6 +50,7 @@ function displayTimer() {
     }
     currentMinutes = currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes;
     currentSeconds = currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds;
+    document.querySelector('.session').innerHTML = `${currentSession} Session`;
     document.querySelector('.timer').innerHTML = `${currentMinutes}:${currentSeconds}`;
     document.title = `${currentSession} – ${currentMinutes}:${currentSeconds}`;
   }
@@ -67,12 +67,17 @@ function displayTimer() {
       currentMinutes = workLength;
       currentSeconds = 0;
       currentSession = 'Work';
+      currentMinutes = currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes;
+      currentSeconds = currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds;
       workTimer = workLength * 60;
       breakTimer = breakLength * 60;
       localStorage.setItem('workTimer', JSON.stringify(workLength));
       localStorage.setItem('breakTimer', JSON.stringify(breakLength));
       document.querySelector('.error-message').style.display = 'none';
+      document.querySelector('.session').innerHTML = `${currentSession} Session`;
       document.querySelector('.timer').innerHTML = `${currentMinutes}:${currentSeconds}`;
+      document.getElementById('work-timer-input').value = workLength;
+      document.getElementById('break-timer-input').value = breakLength;
       document.getElementById('modal').style.display = 'none';
       document.querySelector('.pause-timer').style.display = 'none';
       document.querySelector('.play-timer').style.display = 'inline-block';
@@ -104,7 +109,11 @@ function displayTimer() {
     breakTimer = breakLength * 60;
     currentMinutes = workLength;
     currentSeconds = 0;
+    currentMinutes = currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes;
+    currentSeconds = currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds;
     currentSession = 'Work';
+    document.querySelector('.session').innerHTML = `${currentSession} Session`;
+    document.querySelector('.timer').innerHTML = `${currentMinutes}:${currentSeconds}`;
     document.querySelector('.pause-timer').style.display = 'none';
     document.querySelector('.play-timer').style.display = 'inline-block';
     document.title = 'Pomodoro Timer';
@@ -129,7 +138,9 @@ function displayTimer() {
     }
   });
 
-  document.querySelector('.timer').innerHTML = `${currentMinutes}:${currentSeconds}`
+  document.querySelector('.timer').innerHTML = `${currentMinutes}:${currentSeconds}`;
+  document.getElementById('work-timer-input').value = workLength;
+  document.getElementById('break-timer-input').value = breakLength;
 }
 
 displayTimer();
