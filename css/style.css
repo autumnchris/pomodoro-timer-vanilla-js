@@ -1,11 +1,11 @@
 *:focus {
-  box-shadow: 0 0 3px 3px rgba(65, 180, 250, 0.8);
+  box-shadow: 0 0 3px 3px hsla(203, 95%, 62%, 0.8);
   outline: none;
 }
 
 html {
-  background: #333;
-  background: linear-gradient(120deg, #262626, #4d4d4d) fixed;
+  background: hsl(0, 0%, 20%);
+  background: linear-gradient(120deg, hsl(0, 0%, 15%), hsl(0, 0%, 30%)) fixed;
 }
 
 button,
@@ -24,7 +24,7 @@ input[type=button]:focus {
 }
 
 h1 {
-  color: #fff;
+  color: hsl(0, 0%, 100%);
   display: inline-block;
   float: left;
   font-size: 0.7rem;
@@ -46,11 +46,11 @@ h1 {
 }
 
 .settings:hover {
-  background: rgba(13, 13, 13, 0.2);
+  background: hsla(0, 0%, 5%, 0.2);
 }
 
 #modal {
-  background: rgba(0, 0, 0, 0.75);
+  background: hsla(0, 0%, 0%, 0.75);
   bottom: 0;
   display: none;
   height: 100%;
@@ -65,7 +65,7 @@ h1 {
 
 .modal-content {
   animation: slideIn 0.3s ease-out;
-  background: #fff;
+  background: hsl(0, 0%, 100%);
   border-radius: 5px;
   margin: 10% auto;
   max-width: 400px;
@@ -82,7 +82,7 @@ h1 {
 }
 
 .modal-header {
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid hsl(0, 0%, 90%);
   padding: 10px;
 }
 
@@ -102,7 +102,7 @@ h1 {
 }
 
 .modal-body input[type=text] {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid hsl(0, 0%, 20%);
   max-width: 40px;
 }
 
@@ -128,7 +128,7 @@ h1 {
 .modal-body input[type=button],
 .modal-body input[type=button]:active,
 .modal-body input[type=button]:focus {
-  background: #404040;
+  background: hsl(0, 0%, 25%);
   color: #1ad1ff;
   margin: 0 3px;
   padding: 10px;
@@ -136,7 +136,7 @@ h1 {
 
 .modal-body input[type=submit]:hover,
 .modal-body input[type=button]:hover {
-  background: #333;
+  background: hsl(0, 0%, 20%);
 }
 
 main {
@@ -145,7 +145,7 @@ main {
 }
 
 .timer-card {
-  background: rgba(13, 13, 13, 0.2);
+  background: hsla(0, 0%, 5%, 0.2);
   border-radius: 4px;
   margin: auto;
   max-width: 300px;
@@ -154,7 +154,7 @@ main {
 }
 
 .timer-card h2 {
-  color: #fff;
+  color: hsl(0, 0%, 100%);
   font-size: 1rem;
   font-weight: 300;
   text-align: left;
@@ -193,9 +193,9 @@ main {
 }
 
 footer {
-  background: rgba(13, 13, 13, 0.2);
+  background: hsla(0, 0%, 5%, 0.2);
   bottom: 0;
-  color: #fff;
+  color: hsl(0, 0%, 100%);
   font-size: 0.8rem;
   left: 0;
   letter-spacing: 2px;
