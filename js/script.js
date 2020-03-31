@@ -144,3 +144,5 @@ function displayTimer() {
 }
 
 displayTimer();
+
+document.querySelector('.current-year').innerHTML = new Date().getFullYear();
