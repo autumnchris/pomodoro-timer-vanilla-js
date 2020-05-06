@@ -10,6 +10,7 @@ Project also meets the requirements for the [Pairing Project assignment](https:/
 * JavaScript
 * CSS3
 * HTML5
+* [Normalize.css](https://necolas.github.io/normalize.css)
 * [Font Awesome](https://fontawesome.com)
 * LocalStorage
 * [Wink sound effect](http://www.orangefreesounds.com)

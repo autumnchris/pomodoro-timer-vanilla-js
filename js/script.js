@@ -119,7 +119,7 @@ function displayTimer() {
     document.title = 'Pomodoro Timer';
   });
 
-  document.querySelector('.settings').addEventListener('click', () => {
+  document.querySelector('.settings-button').addEventListener('click', () => {
     document.getElementById('modal').style.display = 'block';
   });
 
