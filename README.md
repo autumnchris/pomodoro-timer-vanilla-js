@@ -8,8 +8,10 @@ Project also meets the requirements for the [Pairing Project assignment](https:/
 
 ## Built With
 * JavaScript
-* CSS3
+* [Sass](http://sass-lang.com)
 * HTML5
+* [Webpack](https://webpack.js.org)
+* [Babel](https://babeljs.io)
 * [Normalize.css](https://necolas.github.io/normalize.css)
 * [Font Awesome](https://fontawesome.com)
 * LocalStorage
@@ -18,3 +20,13 @@ Project also meets the requirements for the [Pairing Project assignment](https:/
 ## Demo
 
 View project demo at [https://autumnchris.github.io/pomodoro-timer-vanilla-js](https://autumnchris.github.io/pomodoro-timer-vanilla-js).
+
+## Installation
+
+```
+$ git clone https://github.com/autumnchris/pomodoro-timer-vanilla-jsgit
+$ cd pomodoro-timer-vanilla-js
+$ npm install
+$ npm start
+```
+Go to `http://localhost:8080`.

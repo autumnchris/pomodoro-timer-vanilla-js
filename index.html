@@ -3,67 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>Pomodoro Timer</title>
+    <link rel="icon" href="public/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/style.css">
   </head>
 
   <body>
-    <!-- HEADER -->
-    <header>
-      <div class="settings-button-container">
-        <button type="button" class="button settings-button" aria-label="settings" title="Settings">
-          <span class="fa fa-cog"></span>
-        </button>
-      </div>
-      <h1>Pomodoro Timer</h1>
-    </header>
-    <main>
-      <!-- SETTINGS MODAL -->
-      <div class="modal" id="modal">
-        <div class="modal-content">
-          <div class="modal-header">Set Custom Timer (in minutes)</div>
-          <div class="modal-body">
-            <form class="settings-form">
-              <div class="form-group">
-                <label for="work-timer-input">Work:</label>
-                <input type="text" value="25" id="work-timer-input" required>
-              </div>
-              <div class="form-group">
-                <label for="break-timer-input">Break:</label>
-                <input type="text" value="5" id="break-timer-input" required>
-              </div>
-              <p class="message error-message"><span class="fa fa-exclamation-circle fa-lg fa-fw"></span> Please enter numbers between 1 and 60.</p>
-              <div class="button-group">
-                <input type="submit" class="button modal-button" value="Save">
-                <input type="button" class="button modal-button cancel" value="Cancel">
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <!-- TIMER -->
-      <div class="timer-card">
-        <h2 class="session">Work Session</h2>
-        <div class="timer"></div>
-      </div>
-      <!-- TIMER BUTTONS -->
-      <div class="button-group timer-buttons">
-        <button type="button" class="button timer-button play-timer" aria-label="play" title="Play">
-          <span class="fa fa-play fa-lg"></span>
-        </button>
-        <button type="button" class="button timer-button pause-timer" aria-label="pause" title="Pause">
-          <span class="fa fa-pause fa-lg"></span>
-        </button>
-        <button type="button" class="button timer-button reset-timer" aria-label="reset" title="Reset">
-          <span class="fa fa-redo-alt fa-lg"></span>
-        </button>
-      </div>
-      <audio src="https://dl.dropbox.com/s/nacdk0xey4io5d8/wink-sound-effect.mp3" class="audio">
-    </main>
-    <!-- FOOTER -->
-    <footer>Created by <a href="https://autumnbullard-portfolio.herokuapp.com" target="_blank">Autumn Bullard</a> &copy; <span class="current-year"></span></footer>
-    <script src="js/script.js"></script>
+    <div id="app"></div>
+    <script src="public/bundle.js"></script>
+    <noscript>
+      <p class="message info-message"><span class="fa fa-info-circle fa-lg fa-fw"></span> This site uses JavaScript. Please enable JavaScript in your browser.</p>
+    </noscript>
   </body>
 </html>

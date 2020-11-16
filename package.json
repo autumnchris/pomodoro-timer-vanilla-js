@@ -1,0 +1,36 @@
+{
+  "name": "pomodoro-timer-vanilla",
+  "version": "1.0.0",
+  "description": "My project for the Build a Pomodoro Clock challenge as part of the curriculum for the Front End Libraries Certification on freeCodeCamp. Built with vanilla JS.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/autumnchris/pomodoro-timer.git"
+  },
+  "author": "autumnchris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/autumnchris/pomodoro-timer/issues"
+  },
+  "homepage": "https://autumnchris.github.io/pomodoro-timer-vanilla-js",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^4.3.0",
+    "mini-css-extract-plugin": "^0.11.2",
+    "node-sass": "^4.14.1",
+    "normalize.css": "^5.0.0",
+    "sass-loader": "^10.0.2",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
