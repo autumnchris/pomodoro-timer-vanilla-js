@@ -24,12 +24,12 @@ const Timer = (() => {
   }
 
   function renderWorkValue(workValue) {
-    workValue ? localStorage.setItem('workValue', JSON.stringify(workValue)) : null;
+    workValue ? localStorage.setItem('workValue', JSON.stringify(Number(workValue))) : null;
     return JSON.parse(localStorage.getItem('workValue')) || 25;
   }
 
   function renderBreakValue(breakValue) {
-    breakValue ? localStorage.setItem('breakValue', JSON.stringify(breakValue)) : null;
+    breakValue ? localStorage.setItem('breakValue', JSON.stringify(Number(breakValue))) : null;
     return JSON.parse(localStorage.getItem('breakValue')) || 5;;
   }
 
@@ -60,7 +60,7 @@ const Timer = (() => {
     }
     else {
 
-      if (breakTimer === renderBreakValue() * 60 && Number(currentMinutes) === 0 && Number(currentSeconds) === 0) {
+      if (breakTimer === renderBreakValue() * 60 && currentMinutes === 0 && currentSeconds === 0) {
         document.querySelector('.audio').play();
         currentMinutes = renderBreakValue();
         currentSeconds = 0;
