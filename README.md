@@ -24,7 +24,7 @@ View project demo at [https://autumnchris.github.io/pomodoro-timer-vanilla-js](h
 ## Installation
 
 ```
-$ git clone https://github.com/autumnchris/pomodoro-timer-vanilla-jsgit
+$ git clone https://github.com/autumnchris/pomodoro-timer-vanilla-js.git
 $ cd pomodoro-timer-vanilla-js
 $ npm install
 $ npm start
