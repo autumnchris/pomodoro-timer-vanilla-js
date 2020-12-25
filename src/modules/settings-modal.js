@@ -4,6 +4,7 @@ const SettingsModal = (() => {
 
   function handleSubmit(event, workTimerInput, breakTimerInput) {
     event.preventDefault();
+    removeFormErrorMessage();
 
     if (!isNaN(workTimerInput) && !isNaN(breakTimerInput) && workTimerInput >= 1 && workTimerInput <= 60 && breakTimerInput >= 1 && breakTimerInput <= 60) {
       Timer.renderTimer(Timer.renderWorkValue(workTimerInput), Timer.renderBreakValue(breakTimerInput));
