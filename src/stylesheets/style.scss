@@ -4,6 +4,7 @@
 
 html {
   background: transparent;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   color: change-color($black, $lightness: 100%);
   height: 100%;
@@ -11,8 +12,10 @@ html {
   text-align: center;
   body {
     background: change-color($black, $lightness: 20%);
+    background: -o-linear-gradient(330deg, change-color($black, $lightness: 15%), change-color($black, $lightness: 30%)) fixed;
     background: linear-gradient(120deg, change-color($black, $lightness: 15%), change-color($black, $lightness: 30%)) fixed;
     min-height: 100%;
+    -ms-scroll-chaining: none;
     overscroll-behavior: none;
     padding: 0 20px;
     position: relative;
@@ -39,6 +42,7 @@ html {
     h4,
     h5,
     h6 {
+      -webkit-box-sizing: border-box;
       box-sizing: border-box;
       margin-top: 0;
     }
@@ -59,6 +63,7 @@ button,
 button:hover,
 button:active,
 button:focus {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -69,6 +74,18 @@ input {
   letter-spacing: 1px;
   line-height: 1.3;
   width: 100%;
+  &::-webkit-input-placeholder {
+    color: change-color($black, $lightness: 60%);
+  }
+  &::-moz-placeholder {
+    color: change-color($black, $lightness: 60%);
+  }
+  &:-ms-input-placeholder {
+    color: change-color($black, $lightness: 60%);
+  }
+  &::-ms-input-placeholder {
+    color: change-color($black, $lightness: 60%);
+  }
   &::placeholder {
     color: change-color($black, $lightness: 60%);
   }
@@ -93,6 +110,7 @@ input:focus,
 select:focus,
 textarea:focus,
 [tabindex]:focus {
+  -webkit-box-shadow: 0 0 3px 3px hsla(203, 95%, 62%, 0.8);
   box-shadow: 0 0 3px 3px hsla(203, 95%, 62%, 0.8);
   outline: none;
 }
@@ -116,8 +134,6 @@ textarea:focus,
 
 .button-group {
   display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
@@ -172,6 +188,7 @@ h1 {
   width: 100%;
   z-index: 1;
   .modal-content {
+    -webkit-animation: slideIn 0.3s ease-out;
     animation: slideIn 0.3s ease-out;
     background: change-color($black, $lightness: 100%);
     border-radius: 5px;
@@ -191,16 +208,12 @@ h1 {
     .modal-body {
       padding: 15px;
       .form-group {
-        -webkit-box-align: center;
-        -moz-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
         display: -webkit-box;
-        display: -moz-box;
-        display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
         margin-bottom: 10px;
         label {
           font-size: 0.7rem;
@@ -217,9 +230,7 @@ h1 {
       }
       .button-group {
         -webkit-box-pack: end;
-        -moz-box-pack: end;
         -ms-flex-pack: end;
-        -webkit-justify-content: flex-end;
         justify-content: flex-end;
         padding-top: 10px;
         .modal-button,
@@ -259,9 +270,7 @@ h1 {
 
 .timer-buttons {
   -webkit-box-pack: center;
-  -moz-box-pack: center;
   -ms-flex-pack: center;
-  -webkit-justify-content: center;
   justify-content: center;
   .timer-button,
   .timer-button:hover,
@@ -302,7 +311,18 @@ noscript .info-message {
   position: absolute;
   text-align: center;
   top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    margin-top: 0;
+  }
+  to {
+    margin-top: 10%;
+  }
 }
 
 @keyframes slideIn {
