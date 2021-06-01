@@ -176,11 +176,12 @@ h1 {
     background: change-color($black, $lightness: 100%);
     border-radius: 5px;
     color: change-color($black, $lightness: 20%);
+    font-size: 0.9rem;
     margin: 10% auto;
     max-width: 280px;
     width: 80%;
-    @media only screen and (max-width: 400px) {
-      font-size: 0.9rem;
+    @media all and (min-width: 400px) {
+      font-size: inherit;
     }
     .modal-header {
       border-bottom: 1px solid change-color($black, $lightness: 80%);
