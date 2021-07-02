@@ -1,6 +1,8 @@
 # Pomodoro Timer (vanilla JS)
 
-My project for the [Build a Pomodoro Clock challenge](https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-pomodoro-clock) as part of the curriculum for the Front End Libraries Certification on [freeCodeCamp](https://www.freecodecamp.org). Built with vanilla JS.
+A front-end web app that counts down using the pomodoro technique with customizable timer settings. Built with vanilla JS.
+
+Inspired by the [Build a Pomodoro Clock challenge](https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-pomodoro-clock) as part of the curriculum for the [Front End Development Libraries Certification](https://www.freecodecamp.org/learn/front-end-libraries) on [freeCodeCamp](https://www.freecodecamp.org).
 
 ---
 

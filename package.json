@@ -1,7 +1,7 @@
 {
   "name": "pomodoro-timer-vanilla-js",
   "version": "1.0.0",
-  "description": "My project for the Build a Pomodoro Clock challenge as part of the curriculum for the Front End Libraries Certification on freeCodeCamp. Built with vanilla JS.",
+  "description": "A front-end web app that counts down using the pomodoro technique with customizable timer settings. Built with vanilla JS.",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
