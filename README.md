@@ -33,7 +33,7 @@ npm start
 
 Once the server is running, go to `http://localhost:8080` in your browser.
 
-Before committing any changes, run the following script to update your `public/bundle.js` and `public/style.css` files for production:
+Before committing any changes, run the following script to update your static files for production:
 ```
 npm run build
 ```
