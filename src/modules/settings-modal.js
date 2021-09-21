@@ -6,12 +6,17 @@ const SettingsModal = (() => {
     event.preventDefault();
     removeFormErrorMessage();
 
-    if (!isNaN(workTimerInput) && !isNaN(breakTimerInput) && workTimerInput >= 1 && workTimerInput <= 60 && breakTimerInput >= 1 && breakTimerInput <= 60) {
-      Timer.renderTimer(Timer.renderWorkValue(workTimerInput), Timer.renderBreakValue(breakTimerInput));
-      closeSettingsModal();
+    if (isNaN(workTimerInput) || workTimerInput < 1 || workTimerInput >= 61) {
+      renderFormErrorMessage('Work Timer');
+    }
+    else if (isNaN(breakTimerInput) || breakTimerInput < 1 || breakTimerInput >= 61) {
+      renderFormErrorMessage('Break Timer');
     }
     else {
-      renderFormErrorMessage();
+      if (Math.floor(workTimerInput) !== workTimerInput) workTimerInput = Math.floor(workTimerInput);
+      if (Math.floor(breakTimerInput) !== breakTimerInput) breakTimerInput = Math.floor(breakTimerInput);
+      Timer.renderTimer(Timer.renderWorkValue(workTimerInput), Timer.renderBreakValue(breakTimerInput));
+      closeSettingsModal();
     }
   }
 
@@ -22,14 +27,14 @@ const SettingsModal = (() => {
     settingsModal.innerHTML = `<div class="modal-content">
       <div class="modal-header">Set Custom Timer (in minutes)</div>
       <div class="modal-body">
-        <form class="settings-form">
+        <form class="settings-form" novalidate>
           <div class="form-group">
             <label for="work-timer-input">Work:</label>
-            <input type="text" value="${Timer.renderWorkValue()}" id="work-timer-input" required />
+            <input type="text" value="${Timer.renderWorkValue()}" id="work-timer-input" />
           </div>
           <div class="form-group">
             <label for="break-timer-input">Break:</label>
-            <input type="text" value="${Timer.renderBreakValue()}" id="break-timer-input" required />
+            <input type="text" value="${Timer.renderBreakValue()}" id="break-timer-input" />
           </div>
           <div class="button-group">
             <input type="submit" class="button modal-button" value="Save" />
@@ -47,10 +52,10 @@ const SettingsModal = (() => {
     settingsModal ? document.querySelector('main').removeChild(settingsModal) : null;
   }
 
-  function renderFormErrorMessage() {
+  function renderFormErrorMessage(timer) {
     const errorMessage = document.createElement('p');
     errorMessage.classList.add('message', 'error-message');
-    errorMessage.innerHTML = `<span class="fa fa-exclamation-circle fa-lg fa-fw"></span> Please enter a number between 1 and 60 to set a custom Work Timer and Break Timer.`;
+    errorMessage.innerHTML = `<span class=" fa fa-exclamation-circle fa-lg fa-fw"></span> ${timer} must be a number greater than 0 and less than 61.`;
 
     document.querySelector('#modal .modal-body').appendChild(errorMessage);
   }
