@@ -30,15 +30,15 @@ const SettingsModal = (() => {
         <form class="settings-form" novalidate>
           <div class="form-group">
             <label for="work-timer-input">Work:</label>
-            <input type="text" value="${Timer.renderWorkValue()}" id="work-timer-input" />
+            <input type="text" value="${Timer.renderWorkValue()}" inputmode="numeric" id="work-timer-input" required />
           </div>
           <div class="form-group">
             <label for="break-timer-input">Break:</label>
-            <input type="text" value="${Timer.renderBreakValue()}" id="break-timer-input" />
+            <input type="text" value="${Timer.renderBreakValue()}" inputmode="numeric" id="break-timer-input" required />
           </div>
           <div class="button-group">
-            <input type="submit" class="button modal-button" value="Save" />
-            <input type="button" class="button modal-button cancel" value="Cancel" />
+            <button type="submit" class="button modal-button">Save</button>
+            <button type="button" class="button modal-button">Cancel</button>
           </div>
         </form>
       </div>
