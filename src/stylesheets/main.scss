@@ -1,0 +1,88 @@
+// STYLES FOR PAGE'S MAIN CONTENT
+
+// Button styles
+.button-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.button,
+.button:visited,
+.button:hover,
+.button:active,
+.button:focus {
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  line-height: normal;
+  padding: 0;
+  width: auto;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.settings-button-container {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  .settings-button,
+  .settings-button:hover,
+  .settings-button:active,
+  .settings-button:focus {
+    color: $blue;
+    height: 30px;
+    width: 30px;
+    &:hover {
+      background: rgba(change-color($black, $lightness: 5%), 0.2);
+    }
+    .settings-icon {
+      pointer-events: none;
+    }
+  }
+}
+
+.timer-buttons {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  .timer-button,
+  .timer-button:hover,
+  .timer-button:active,
+  .timer-button:focus {
+    background: $blue;
+    border: 2px solid $blue;
+    color: change-color($black, $lightness: 20%);
+    height: 45px;
+    margin: 10px 5px 0;
+    width: 45px;
+    &:hover {
+      background: transparent;
+      color: $blue;
+    }
+    .timer-icon {
+      pointer-events: none;
+    }
+  }
+}
+
+// Timer styles
+.timer-card {
+  background: rgba(change-color($black, $lightness: 5%), 0.2);
+  margin: 0 auto;
+  max-width: 300px;
+  padding: 20px;
+  h2 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-align: left;
+    text-transform: uppercase;
+  }
+  .timer {
+    color: $blue;
+    font-size: 2.5rem;
+  }
+}

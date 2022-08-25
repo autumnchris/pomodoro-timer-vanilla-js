@@ -2,11 +2,13 @@
 
 // BASE PAGE STYLES
 
-html {
-  background: transparent;
+* {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  color: change-color($black, $lightness: 100%);
+}
+
+html {
+  background: transparent;
   height: 100%;
   letter-spacing: 1px;
   text-align: center;
@@ -14,6 +16,7 @@ html {
     background: change-color($black, $lightness: 20%);
     background: -o-linear-gradient(330deg, change-color($black, $lightness: 15%), change-color($black, $lightness: 30%)) fixed;
     background: linear-gradient(120deg, change-color($black, $lightness: 15%), change-color($black, $lightness: 30%)) fixed;
+    color: change-color($black, $lightness: 100%);
     min-height: 100%;
     -ms-scroll-chaining: none;
     overscroll-behavior: none;
@@ -42,52 +45,15 @@ html {
     h4,
     h5,
     h6 {
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
       margin-top: 0;
     }
-  }
-}
-
-// BASE ELEMENT STYLES
-
-div,
-header,
-main,
-footer,
-p,
-form,
-label,
-input,
-button,
-button:hover,
-button:active,
-button:focus {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-input {
-  border: 0;
-  border-radius: 0;
-  color: change-color($black, $lightness: 20%);
-  letter-spacing: 1px;
-  line-height: 1.3;
-  width: 100%;
-  &::-webkit-input-placeholder {
-    color: change-color($black, $lightness: 60%);
-  }
-  &::-moz-placeholder {
-    color: change-color($black, $lightness: 60%);
-  }
-  &:-ms-input-placeholder {
-    color: change-color($black, $lightness: 60%);
-  }
-  &::-ms-input-placeholder {
-    color: change-color($black, $lightness: 60%);
-  }
-  &::placeholder {
-    color: change-color($black, $lightness: 60%);
+    h1 {
+      font-size: 1.18rem;
+      font-weight: 600;
+      letter-spacing: 7px;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -115,181 +81,13 @@ textarea:focus,
   outline: none;
 }
 
-.button,
-.button:visited,
-.button:hover,
-.button:active,
-.button:focus {
-  background: transparent;
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  line-height: normal;
-  padding: 0;
-  width: auto;
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.button-group {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
+// Message styles
 .message {
   border-radius: 5px;
   line-height: 1.55;
   margin: 20px auto;
   max-width: 800px;
   padding: 15px 10px;
-}
-
-// SPECIFIC ELEMENT STYLES
-
-.settings-button-container {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  .settings-button,
-  .settings-button:hover,
-  .settings-button:active,
-  .settings-button:focus {
-    color: $blue;
-    height: 30px;
-    width: 30px;
-    &:hover {
-      background: rgba(change-color($black, $lightness: 5%), 0.2);
-    }
-    .settings-icon {
-      pointer-events: none;
-    }
-  }
-}
-
-h1 {
-  font-size: 1.18rem;
-  font-weight: 600;
-  letter-spacing: 7px;
-  margin-bottom: 24px;
-  text-transform: uppercase;
-}
-
-.modal {
-  background: rgba($black, 0.75);
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  overflow: auto;
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-  .modal-content {
-    -webkit-animation: slideIn 0.3s ease-out;
-    animation: slideIn 0.3s ease-out;
-    background: change-color($black, $lightness: 100%);
-    border-radius: 5px;
-    color: change-color($black, $lightness: 20%);
-    font-size: 0.9rem;
-    margin: 10% auto;
-    max-width: 280px;
-    width: 80%;
-    @media all and (min-width: 400px) {
-      font-size: inherit;
-    }
-    .modal-header {
-      border-bottom: 1px solid change-color($black, $lightness: 80%);
-      padding: 10px;
-      text-align: left;
-    }
-    .modal-body {
-      padding: 15px;
-      .form-group {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        margin-bottom: 10px;
-        label {
-          font-size: 0.7rem;
-          font-weight: 600;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-        }
-        input[type=text] {
-          background: transparent;
-          border-bottom: 1px solid change-color($black, $lightness: 20%);
-          margin-left: 5px;
-          max-width: 40px;
-        }
-      }
-      .button-group {
-        -webkit-box-pack: end;
-        -ms-flex-pack: end;
-        justify-content: flex-end;
-        padding-top: 10px;
-        .modal-button,
-        .modal-button:hover,
-        .modal-button:active,
-        .modal-button:focus {
-          background: change-color($black, $lightness: 25%);
-          color: $blue;
-          margin-left: 8px;
-          padding: 8px 10px;
-          &:hover {
-            background: change-color($black, $lightness: 20%);
-          }
-        }
-      }
-    }
-  }
-}
-
-.timer-card {
-  background: rgba(change-color($black, $lightness: 5%), 0.2);
-  margin: 0 auto;
-  max-width: 300px;
-  padding: 20px;
-  h2 {
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 5px;
-    text-align: left;
-    text-transform: uppercase;
-  }
-  .timer {
-    color: $blue;
-    font-size: 2.5rem;
-  }
-}
-
-.timer-buttons {
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  .timer-button,
-  .timer-button:hover,
-  .timer-button:active,
-  .timer-button:focus {
-    background: $blue;
-    border: 2px solid $blue;
-    color: change-color($black, $lightness: 20%);
-    height: 45px;
-    margin: 10px 5px 0;
-    width: 45px;
-    &:hover {
-      background: transparent;
-      color: $blue;
-    }
-    .timer-icon {
-      pointer-events: none;
-    }
-  }
 }
 
 .error-message {
@@ -316,20 +114,5 @@ noscript .info-message {
   transform: translate(-50%, -50%);
 }
 
-@-webkit-keyframes slideIn {
-  from {
-    margin-top: 0;
-  }
-  to {
-    margin-top: 10%;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    margin-top: 0;
-  }
-  to {
-    margin-top: 10%;
-  }
-}
+@import "main";
+@import "form";
