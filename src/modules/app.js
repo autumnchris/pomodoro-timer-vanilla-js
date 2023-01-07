@@ -1,6 +1,6 @@
 import timerDone from '../audio/timer-done.mp3';
-import { SettingsModal } from './settings-modal';
-import { Timer } from './timer';
+import { SettingsModal } from './SettingsModal';
+import { Timer } from './Timer';
 
 const App = (() => {
 

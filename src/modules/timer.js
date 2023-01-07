@@ -1,5 +1,3 @@
-import { SettingsModal } from './settings-modal';
-
 const Timer = (() => {
   let timer;
   let currentSession;
