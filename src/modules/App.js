@@ -26,7 +26,7 @@ const App = (() => {
     document.addEventListener('click', event => {
       const element = event.target;
       element.matches('.settings-button') ? SettingsModal.openSettingsModal() : null;
-      element.matches('#modal .cancel') ? SettingsModal.closeSettingsModal() : null;
+      element.matches('#modal .modal-button.cancel') ? SettingsModal.closeSettingsModal() : null;
       element.matches('#modal') ? SettingsModal.closeSettingsModal() : null;
       element.matches('.play-timer') ? Timer.countDown() : null;
       element.matches('.pause-timer') ? Timer.pauseTimer() : null;

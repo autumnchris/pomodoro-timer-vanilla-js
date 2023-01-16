@@ -37,8 +37,8 @@ const SettingsModal = (() => {
             <input type="text" value="${Timer.renderBreakValue()}" inputmode="numeric" id="break-timer-input" required />
           </div>
           <div class="button-group">
-            <button type="submit" class="button modal-button">Save</button>
-            <button type="button" class="button modal-button">Cancel</button>
+            <button type="submit" class="button modal-button submit">Save</button>
+            <button type="button" class="button modal-button cancel">Cancel</button>
           </div>
         </form>
       </div>
