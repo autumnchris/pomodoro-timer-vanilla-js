@@ -99,6 +99,10 @@ input {
   }
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 @-webkit-keyframes slideIn {
   from {
     margin-top: 0;
