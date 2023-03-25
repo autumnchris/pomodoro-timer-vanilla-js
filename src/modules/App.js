@@ -1,4 +1,4 @@
-import timerDone from '../audio/timer-done.mp3';
+import timerDone from '../assets/audio/timer-done.mp3';
 import { SettingsModal } from './SettingsModal';
 import { Timer } from './Timer';
 
