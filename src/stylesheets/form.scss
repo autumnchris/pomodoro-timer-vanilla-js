@@ -94,6 +94,12 @@ input {
             background: change-color($black, $lightness: 20%);
           }
         }
+        .modal-button[type=submit],
+        .modal-button[type=submit]:hover,
+        .modal-button[type=submit]:active,
+        .modal-button[type=submit]:focus {
+          font-weight: 400;
+        }
       }
     }
   }

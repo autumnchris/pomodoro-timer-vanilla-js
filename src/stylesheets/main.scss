@@ -19,12 +19,9 @@
   line-height: normal;
   padding: 0;
   width: auto;
-  &:hover {
-    text-decoration: none;
-  }
 }
 
-.settings-button-container {
+aside .settings-button-container {
   position: absolute;
   right: 10px;
   top: 10px;

@@ -1,129 +1,162 @@
-const Timer = (() => {
-  let timer;
-  let currentSession;
-  let currentMinutes;
-  let currentSeconds;
-  let workTimer;
-  let breakTimer;
+import getWorkValue from '../utils/getWorkValue';
+import getBreakValue from '../utils/getBreakValue';
+import getTitle from '../utils/getTitle';
 
-  function resetTimer(workValue, breakValue) {
-    clearInterval(timer);
+class Timer {
+  constructor() {
+    this.timer = null;
+    this.workTimer = getWorkValue() * 60;
+    this.breakTimer = getBreakValue() * 60;
+    this.currentSession = 'Work';
+    this.currentMinutes = getWorkValue();
+    this.currentSeconds = 0;
+    this.playStatus = 'Play';
+  }
 
-    timer = null;
-    currentSession = 'Work';
-    currentMinutes = workValue;
-    currentSeconds = 0;
-    workTimer = workValue * 60;
-    breakTimer = breakValue * 60;
+  refreshTimerValues() {
+    this.workTimer = getWorkValue() * 60;
+    this.breakTimer = getBreakValue() * 60;
+    this.currentSession = 'Work';
+    this.currentMinutes = getWorkValue();
+    this.currentSeconds = 0;
+  }
+
+  resetTimer() {
+    clearInterval(this.timer);
+    this.timer = null;
+    this.refreshTimerValues();
+    this.togglePlayStatusValue(true);
+    getTitle('Pomodoro Timer');
 
     document.querySelector('.audio').pause();
     document.querySelector('.audio').currentTime = 0;
-    document.title = 'Pomodoro Timer';
+    this.removeTimerCard('main');
+    this.removeTimerButtons('main');
+    this.renderTimerCard(['main', '.audio']);
+    this.renderTimerButtons(['main', '.audio']);
   }
 
-  function renderWorkValue(workValue) {
-    workValue ? localStorage.setItem('workValue', JSON.stringify(Number(workValue))) : null;
-    return JSON.parse(localStorage.getItem('workValue')) || 25;
+  pauseTimer() {
+    clearInterval(this.timer);
+    this.togglePlayStatusValue();
+
+    document.querySelector('.audio').pause();
+    this.removeTimerButtons('main');
+    this.renderTimerButtons(['main', '.audio']);
   }
 
-  function renderBreakValue(breakValue) {
-    breakValue ? localStorage.setItem('breakValue', JSON.stringify(Number(breakValue))) : null;
-    return JSON.parse(localStorage.getItem('breakValue')) || 5;;
-  }
+  countDown() {
 
-  function togglePlayPause(show) {
-    let hide;
-    show === 'play' ? hide = 'pause' : show === 'pause' ? hide = 'play' : null;
-
-    const buttonToShow = document.createElement('button');
-    const buttonToHide = document.querySelector(`.timer-buttons .${hide}-timer`);
-
-    buttonToShow.setAttribute('type', 'button');
-    buttonToShow.classList.add('button', 'timer-button', `${show}-timer`);
-    buttonToShow.setAttribute('aria-label', show);
-    buttonToShow.setAttribute('title', show.replace(show.charAt(0), show.charAt(0).toUpperCase()));
-    buttonToShow.innerHTML = `<span class="fa fa-${show} fa-lg timer-icon"></span>`;
-
-    buttonToHide ? document.querySelector('.timer-buttons').removeChild(buttonToHide) : null;
-    !document.querySelector(`.timer-buttons .${show}-timer`) ? document.querySelector('.timer-buttons').insertBefore(buttonToShow, document.querySelector('.reset-timer')) : null;
-  }
-
-  function playTimer() {
-    let currentTimer;
-
-    if (workTimer > 0) {
-      workTimer--;
-      currentMinutes = parseInt(workTimer / 60, 10);
-      currentSeconds = parseInt(workTimer % 60, 10);
+    if (this.workTimer > 0) {
+      this.workTimer--;
+      this.currentMinutes = parseInt(this.workTimer / 60, 10);
+      this.currentSeconds = parseInt(this.workTimer % 60, 10);
     }
     else {
 
-      if (breakTimer === renderBreakValue() * 60 && currentMinutes === 0 && currentSeconds === 0) {
+      if (this.breakTimer === getBreakValue() * 60 && this.currentMinutes === 0 && this.currentSeconds === 0) {
+        this.currentMinutes = getBreakValue();
+        this.currentSeconds = 0;
+        this.currentSession = 'Break';
         document.querySelector('.audio').play();
-        currentMinutes = renderBreakValue();
-        currentSeconds = 0;
-        currentSession = 'Break';
       }
       else {
 
-        if (breakTimer > 0) {
-          breakTimer--;
-          currentMinutes = parseInt(breakTimer / 60, 10);
-          currentSeconds = parseInt(breakTimer % 60, 10);
+        if (this.breakTimer > 0) {
+          this.breakTimer--;
+          this.currentMinutes = parseInt(this.breakTimer / 60, 10);
+          this.currentSeconds = parseInt(this.breakTimer % 60, 10);
         }
         else {
+          clearInterval(this.timer);
+          this.workTimer = getWorkValue() * 60;
+          this.breakTimer = getBreakValue() * 60;
+          this.currentMinutes = this.workTimer / 60;
+          this.currentSeconds = this.workTimer % 60;
+          this.currentSession = 'Work';
           document.querySelector('.audio').play();
-          clearInterval(timer);
-          workTimer = renderWorkValue() * 60;
-          breakTimer = renderBreakValue() * 60;
-          currentMinutes = workTimer / 60;
-          currentSeconds = workTimer % 60;
-          currentSession = 'Work';
-          countDown();
+          this.playTimer(true);
         }
       }
     }
 
-    currentTimer = `${currentMinutes < 10 ? `0${currentMinutes}` : currentMinutes}:${currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds}`;
-    document.querySelector('.session').innerHTML = `${currentSession} Session`;
-    document.querySelector('.timer').innerHTML = currentTimer;
-    document.title = `${currentSession} – ${currentTimer}`;
+    getTitle(`${this.currentSession} - ${this.currentMinutes < 10 ? `0${this.currentMinutes}` : this.currentMinutes}:${this.currentSeconds < 10 ? `0${this.currentSeconds}` : this.currentSeconds}`);
+    this.removeTimerCard('main');
+    this.renderTimerCard(['main', '.timer-buttons']);
   }
 
-  function countDown() {
-    timer = setInterval(playTimer, 1000);
-    togglePlayPause('pause');
+  playTimer(continueTimer = false) {
+    this.timer = setInterval(this.countDown.bind(this), 1000);
+    if(continueTimer) return;
+    this.togglePlayStatusValue();
+    this.removeTimerButtons('main');
+    this.renderTimerButtons(['main', '.audio']);
   }
 
-  function pauseTimer() {
-    clearInterval(timer);
-    document.querySelector('.audio').pause();
-    togglePlayPause('play');
+  togglePlayStatusValue(isReset = false) {
+
+    if (this.playStatus === 'Pause' || isReset) {
+      this.playStatus = 'Play';
+    }
+    else if (this.playStatus === 'Play') {
+      this.playStatus = 'Pause';
+    }
   }
 
-  function renderTimer(workValue, breakValue) {
-    resetTimer(workValue, breakValue);
-
-    document.querySelector('.timer-card').innerHTML = `
-    <h2 class="session">${currentSession} Session</h2>
-    <div class="timer">${workValue < 10 ? `0${workValue}` : workValue}:00</div>`;
-
-    document.querySelector('.timer-buttons').innerHTML = `
-    <button type="button" class="button timer-button reset-timer" aria-label="reset" title="Reset">
-      <span class="fa fa-redo-alt fa-lg timer-icon"></span>
-    </button>`;
-
-    togglePlayPause('play');
+  updateTimer() {
+    this.resetTimer();
+    this.removeTimerCard('main');
+    this.removeTimerButtons('main');
+    this.renderTimerCard(['main', '.audio']);
+    this.renderTimerButtons(['main', '.audio']);
   }
 
-  return {
-    timer,
-    renderWorkValue,
-    renderBreakValue,
-    countDown,
-    pauseTimer,
-    renderTimer
-  };
-})();
+  // DOM methods
+  renderTimerCard(location) {
+    const timerCard = document.createElement('div');
+    timerCard.classList.add('timer-card');
+    timerCard.innerHTML = `
+      <h2 class="session">${this.currentSession} Session</h2>
+      <div class="timer">${this.currentMinutes < 10 ? `0${this.currentMinutes}` : this.currentMinutes}:${this.currentSeconds < 10 ? `0${this.currentSeconds}` : this.currentSeconds}</div>
+    `;
 
-export { Timer };
+    if (typeof location === 'string') {
+      document.querySelector(location).appendChild(timerCard);
+    }
+    else if (Array.isArray(location)) {
+      document.querySelector(location[0]).insertBefore(timerCard, document.querySelector(location[1]));
+    }
+  }
+
+  renderTimerButtons(location) {
+    const timerButtons = document.createElement('div');
+    timerButtons.classList.add('button-group', 'timer-buttons');
+    timerButtons.innerHTML = `
+      <button type="button" class="button timer-button ${this.playStatus.toLowerCase()}-timer" aria-label="${this.playStatus.toLowerCase()} timer" title="${this.playStatus}">
+        <span class="fa-solid fa-${this.playStatus.toLowerCase()} fa-lg timer-icon"></span>
+      </button>
+      <button type="button" class="button timer-button reset-timer" aria-label="reset timer" title="Reset">
+        <span class="fa-solid fa-rotate-right fa-lg timer-icon"></span>
+      </button>
+    `;
+
+    if (typeof location === 'string') {
+      document.querySelector(location).appendChild(timerButtons);
+    }
+    else if (Array.isArray(location)) {
+      document.querySelector(location[0]).insertBefore(timerButtons, document.querySelector(location[1]));
+    }
+  }
+
+  removeTimerCard(location) {
+    const timerCard = document.querySelector(`${location} .timer-card`);
+    timerCard ? document.querySelector(location).removeChild(timerCard) : null;
+  }
+
+  removeTimerButtons(location) {
+    const timerButtons = document.querySelector(`${location} .timer-buttons`);
+    timerButtons ? document.querySelector(location).removeChild(timerButtons) : null;
+  }
+}
+
+export default Timer;
