@@ -11,7 +11,6 @@ class App {
     this.timer = new Timer();
     this.settingsModal = new SettingsModal(this.timer);
     this.renderApp();
-    this.events();
   }
 
   // Event listeners
@@ -43,6 +42,7 @@ class App {
     this.footer.renderFooter('#app');
     this.timer.renderTimerCard(['main', '.audio']);
     this.timer.renderTimerButtons(['main', '.audio']);
+    this.events();
   }
 
   renderMain(location) {
